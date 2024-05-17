@@ -51,83 +51,86 @@ const Gallery = () => {
 
   return (
     <Box mt={10}>
-    <Typography gutterBottom sx={{color:"white", textAlign:"center", fontSize:30}}>GALLERY</Typography>
-    <Box
-      mt={ isMobile ? 150 : 0}
-      mx={"auto"}
-      display={"flex"}
-      justifyContent={"space-around"}
-      maxWidth={"90%"}
-    >
-      
-      <Grid container spacing={1} alignItems="center"  mx={"auto"}>
-        <Grid item xs={12} lg={3} display={"flex"} justifyContent={"center"}>
-          <Image src="/drink1.png" width={250} height={160} />
-        </Grid>
-        <Grid item xs={12} lg={6}>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              width: "100%",
-            }}
-          >
-            {!isMobile && (
-              <Button
-                size="small"
-                onClick={handleBack}
-                disabled={activeStep === 0}
-              >
-                <Image src="/Group 87.png" width={40} height={40} />
-              </Button>
-            )}
-
-            <AutoPlaySwipeableViews
-              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-              index={activeStep}
-              onChangeIndex={handleStepChange}
-              enableMouseEvents
-              sx={{ width: "100%", overflow: "hidden" }}
+      <Typography
+        gutterBottom
+        sx={{ color: "white", textAlign: "center", fontSize: 30 }}
+      >
+        GALLERY
+      </Typography>
+      <Box
+        mt={isMobile ? 150 : 0}
+        mx={"auto"}
+        display={"flex"}
+        justifyContent={"space-around"}
+        maxWidth={"90%"}
+      >
+        <Grid container spacing={1} alignItems="center" mx={"auto"}>
+          <Grid item xs={12} lg={3} display={"flex"} justifyContent={"center"}>
+            <Image src="/drink1.png" width={250} height={160} />
+          </Grid>
+          <Grid item xs={12} lg={6}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                width: "100%",
+              }}
             >
-              {images.map((step, index) => (
-                <div key={step.label}>
-                  {Math.abs(activeStep - index) <= 2 ? (
-                    <Box
-                      component="img"
-                      sx={{
-                        height: 250,
-                        display: "block",
-                        overflow: "hidden",
-                        width: "100%",
-                      }}
-                      src={step.imgPath}
-                      alt={step.label}
-                    />
-                  ) : null}
-                </div>
-              ))}
-            </AutoPlaySwipeableViews>
+              {!isMobile && (
+                <Button
+                  size="small"
+                  onClick={handleBack}
+                  disabled={activeStep === 0}
+                >
+                  <Image src="/Group 87.png" width={40} height={40} />
+                </Button>
+              )}
 
-            {!isMobile && ( // Show bottom button only on non-mobile screens
-              <Button
-                size="small"
-                onClick={handleNext}
-                disabled={activeStep === maxSteps - 1}
+              <AutoPlaySwipeableViews
+                axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+                index={activeStep}
+                onChangeIndex={handleStepChange}
+                enableMouseEvents
+                sx={{ width: "100%", overflow: "hidden" }}
               >
-                <Image src="/Group 86.png" width={40} height={40} />
-              </Button>
-            )}
-          </Box>
+                {images.map((step, index) => (
+                  <div key={step.label}>
+                    {Math.abs(activeStep - index) <= 2 ? (
+                      <Box
+                        component="img"
+                        sx={{
+                          height: 250,
+                          display: "block",
+                          overflow: "hidden",
+                          width: "100%",
+                        }}
+                        src={step.imgPath}
+                        alt={step.label}
+                      />
+                    ) : null}
+                  </div>
+                ))}
+              </AutoPlaySwipeableViews>
+
+              {!isMobile && ( // Show bottom button only on non-mobile screens
+                <Button
+                  size="small"
+                  onClick={handleNext}
+                  disabled={activeStep === maxSteps - 1}
+                >
+                  <Image src="/Group 86.png" width={40} height={40} />
+                </Button>
+              )}
+            </Box>
+          </Grid>
+          <Grid item xs={12} lg={3} display={"flex"} justifyContent={"center"}>
+            <Image src="/drink1.png" width={250} height={160} />
+          </Grid>
         </Grid>
-        <Grid item xs={12} lg={3} display={"flex"} justifyContent={"center"}>
-          <Image src="/drink1.png" width={250} height={160} />
-        </Grid>
-      </Grid>
-    </Box>
+      </Box>
     </Box>
   );
 };
 
 export default Gallery;
-

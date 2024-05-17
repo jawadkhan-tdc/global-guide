@@ -199,8 +199,10 @@ const HeroSection = () => {
                 width={isMobile ? 270 : 350}
                 borderRadius={2}
                 display={"flex"}
-                sx={{backgroundImage: "url('/Rectangle 4.png')",
-                backgroundSize: "cover"}}
+                sx={{
+                  backgroundImage: "url('/Rectangle 4.png')",
+                  backgroundSize: "cover",
+                }}
                 flexDirection={"column"}
                 justifyContent={"center"}
               >
@@ -246,9 +248,18 @@ const HeroSection = () => {
                   Champagne crus.
                 </Typography>
 
-                <Box mt={1} sx={{display:"flex",alignItems:"center",justifyContent:"center"}}>
+                <Box
+                  mt={1}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
                   <Image src="/button1.png" height={40} width={40} />
-                  <Typography color={"black"} gutterBottom>Find Stories nearby</Typography>
+                  <Typography color={"black"} gutterBottom>
+                    Find Stories nearby
+                  </Typography>
                 </Box>
               </Box>
             </Grid>

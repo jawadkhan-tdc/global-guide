@@ -14,14 +14,14 @@ import {
   CardMedia,
   CardActions,
 } from "@mui/material";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
 import Chart from "./Chart";
 
 const ChartMain = () => {
-  const params = useSearchParams();
+  // const params = useSearchParams();
   const router = useRouter();
   const theme = createTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -226,7 +226,7 @@ const ChartMain = () => {
             </Box>
           </Box>
           <Box mt={3}>
-            <Chart/>
+            <Chart />
           </Box>
           <Box
             mt={5}
