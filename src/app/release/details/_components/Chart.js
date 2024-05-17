@@ -91,7 +91,7 @@ function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <ChartData/>
+        <ChartData />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <ChartData />
@@ -110,7 +110,7 @@ const Chart = () => {
         <Grid item xs={12} lg={6}>
           <BasicTabs />
         </Grid>
-        <Grid mt={3}item xs={12} lg={6}>
+        <Grid mt={3} item xs={12} lg={6}>
           <Image src="/Group 427319345.png" height={300} width={400} />
         </Grid>
       </Grid>

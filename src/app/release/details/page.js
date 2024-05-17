@@ -11,11 +11,11 @@ const page = () => {
   return (
     <Box>
       <Navbar />
-      <Navbar1/>
+      <Navbar1 />
       <HeroSection />
       <Gallery />
-      <ChartMain/>
-      <Footer/>
+      <ChartMain />
+      <Footer />
     </Box>
   );
 };

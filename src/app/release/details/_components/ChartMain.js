@@ -14,14 +14,14 @@ import {
   CardMedia,
   CardActions,
 } from "@mui/material";
-import { useSearchParams } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
 import Chart from "./Chart";
 
 const ChartMain = () => {
-  const params = useSearchParams();
+  // const params = useSearchParams();
   const router = useRouter();
   const theme = createTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -57,10 +57,18 @@ const ChartMain = () => {
                   display={isMobile ? "block" : "flex"}
                   gap={isMobile ? 0 : 5}
                 >
-                  <Typography variant={isMobile ? "body1" : "h6"} color={"white"} gutterBottom>
+                  <Typography
+                    variant={isMobile ? "body1" : "h6"}
+                    color={"white"}
+                    gutterBottom
+                  >
                     DETAILS
                   </Typography>
-                  <Typography variant={isMobile ? "body1" : "h6"} gutterBottom color={"white"} >
+                  <Typography
+                    variant={isMobile ? "body1" : "h6"}
+                    gutterBottom
+                    color={"white"}
+                  >
                     USER REVIEWS
                   </Typography>
                 </Box>
@@ -68,10 +76,18 @@ const ChartMain = () => {
                   display={isMobile ? "block" : "flex"}
                   gap={isMobile ? 0 : 5}
                 >
-                  <Typography variant={isMobile ? "body1" : "h6"} gutterBottom color={"white"} >
+                  <Typography
+                    variant={isMobile ? "body1" : "h6"}
+                    gutterBottom
+                    color={"white"}
+                  >
                     RELEASE LEGEND
                   </Typography>
-                  <Typography variant={isMobile ? "body1" : "h6"} gutterBottom color={"white"} > 
+                  <Typography
+                    variant={isMobile ? "body1" : "h6"}
+                    gutterBottom
+                    color={"white"}
+                  >
                     DISTILLERY INFO
                   </Typography>
                 </Box>
@@ -91,7 +107,7 @@ const ChartMain = () => {
               </Box>
             </Box>
             <Box p={5}>
-              <Typography variant="h6" gutterBottom color={"white"} >
+              <Typography variant="h6" gutterBottom color={"white"}>
                 COMMUNITY RATING:
               </Typography>
               <img src="/Frame 37.png" alt="" />
@@ -100,7 +116,7 @@ const ChartMain = () => {
                 variant="body1"
                 textAlign={"left"}
                 gutterBottom
-                color={"white"} 
+                color={"white"}
               >
                 Bache-Gabrielsen is a revered cognac house started in 1905. The
                 “Natur & Eleganse” line is supposed to be a break from their
@@ -124,7 +140,7 @@ const ChartMain = () => {
                   <Typography color={"#999"} variant="h6" gutterBottom>
                     AGE
                   </Typography>
-                  <Typography variant="h6" gutterBottom color={"white"} >
+                  <Typography variant="h6" gutterBottom color={"white"}>
                     VSOP
                   </Typography>
                 </Box>
@@ -136,7 +152,7 @@ const ChartMain = () => {
                   <Typography color={"#999"} variant="h6" gutterBottom>
                     CASK TYPE
                   </Typography>
-                  <Typography variant="h6" gutterBottom color={"white"} >
+                  <Typography variant="h6" gutterBottom color={"white"}>
                     LimousiN OAK
                   </Typography>
                 </Box>
@@ -148,7 +164,7 @@ const ChartMain = () => {
                   <Typography color={"#999"} variant="h6" gutterBottom>
                     ABV
                   </Typography>
-                  <Typography variant="h6" gutterBottom color={"white"} >
+                  <Typography variant="h6" gutterBottom color={"white"}>
                     40,3°
                   </Typography>
                 </Box>
@@ -160,7 +176,7 @@ const ChartMain = () => {
                   <Typography color={"#999"} variant="h6" gutterBottom>
                     BRAND
                   </Typography>
-                  <Typography variant="h6" gutterBottom color={"white"} >
+                  <Typography variant="h6" gutterBottom color={"white"}>
                     LOREM IPSUM{" "}
                     <span style={{ fontWeight: "700", color: "goldenrod" }}>
                       (54)
@@ -173,7 +189,7 @@ const ChartMain = () => {
                 textAlign={"left"}
                 variant="body1"
                 gutterBottom
-                color={"white"} 
+                color={"white"}
               >
                 Brandy distilled in a delimited region within France from
                 specific grapes. Must be double-distilled to no higher than 72%
@@ -185,10 +201,15 @@ const ChartMain = () => {
           </Box>
           <Box mt={5} p={5} borderRadius={5} sx={{ backgroundColor: "#333" }}>
             <Box display={"flex"} justifyContent={"space-between"}>
-              <Typography fontWeight={700} variant="h6" gutterBottom color={"white"} >
+              <Typography
+                fontWeight={700}
+                variant="h6"
+                gutterBottom
+                color={"white"}
+              >
                 TASTING NOTES
               </Typography>
-              <Box color={"white"} >
+              <Box color={"white"}>
                 <WestIcon sx={{ marginRight: "50px" }} />
                 <EastIcon />
               </Box>
@@ -200,7 +221,12 @@ const ChartMain = () => {
             >
               <Box width={isMobile ? "100%" : "70%"}>
                 <img src="/Group 96.png" alt="" />
-                <Typography textAlign={"left"} variant="body1" gutterBottom color={"white"} >
+                <Typography
+                  textAlign={"left"}
+                  variant="body1"
+                  gutterBottom
+                  color={"white"}
+                >
                   "The color of this cognac has a very pleasant golden tint and
                   the aromatics show classic scents of baked, white grapes, hard
                   lemon candy, and opulent French oak. True to the product’s
@@ -214,11 +240,13 @@ const ChartMain = () => {
               </Box>
 
               <Box p={4}>
-                <Typography variant="h5" color={"white"} >ADDED BY</Typography>
-                <Typography mt={2} color={"goldenrod"} variant="h5" >
+                <Typography variant="h5" color={"white"}>
+                  ADDED BY
+                </Typography>
+                <Typography mt={2} color={"goldenrod"} variant="h5">
                   JOHN RANKIN
                 </Typography>
-                <Typography mt={2} variant="h5" color={"white"} >
+                <Typography mt={2} variant="h5" color={"white"}>
                   Score:{" "}
                   <span style={{ fontWeight: "700", color: "goldenrod" }}>
                     90
@@ -228,7 +256,7 @@ const ChartMain = () => {
             </Box>
           </Box>
           <Box mt={3}>
-            <Chart/>
+            <Chart />
           </Box>
           <Box
             mt={5}
@@ -236,10 +264,18 @@ const ChartMain = () => {
             p={isMobile ? 2 : 3}
             sx={{ backgroundImage: 'url("/Rectangle 53.png")' }}
           >
-            <Typography gutterBottom variant={isMobile ? "h5" : "h4"} color={"white"} >
+            <Typography
+              gutterBottom
+              variant={isMobile ? "h5" : "h4"}
+              color={"white"}
+            >
               SUBSCRIBE FOR OUR NEWSLETTER
             </Typography>
-            <Typography gutterBottom variant={isMobile ? "body1" : "h6"} color={"white"} >
+            <Typography
+              gutterBottom
+              variant={isMobile ? "body1" : "h6"}
+              color={"white"}
+            >
               Keep updated about new products lorem ipsum
             </Typography>
             <Box
