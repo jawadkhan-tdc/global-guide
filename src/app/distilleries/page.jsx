@@ -27,10 +27,11 @@ const Page = () => {
 
   const theme = createTheme(); // Create a theme instance
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  let dataArray = [];
   if (typeof window !== "undefined") {
     const distelleryData = JSON.parse(localStorage.getItem("distelleryData"));
     const BrandData = JSON.parse(localStorage.getItem("brandData"));
-    const dataArray = [];
     if (distelleryData && BrandData) {
       // add id's to both distellery and brand Data
       distelleryData.distelleryId = dataArray.length;

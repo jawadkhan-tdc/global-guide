@@ -17,11 +17,12 @@ const Page = () => {
 
   const theme = createTheme(); // Create a theme instance
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  let dataArray = [];
   if (typeof window !== "undefined") {
     const distelleryBrandReleaseData = JSON.parse(
       localStorage.getItem("distelleryBrandReleaseData")
     );
-    const dataArray = [];
     if (distelleryBrandReleaseData) {
       // add id's to both distellerybrand and release Data
       // distelleryData.distelleryId = dataArray.length;
