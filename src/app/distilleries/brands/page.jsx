@@ -14,27 +14,29 @@ import BrandCard from "./_components/BrandCard";
 
 const Page = () => {
   const [openModal, setOpenModal] = useState(false); // State
-  
+
   const theme = createTheme(); // Create a theme instance
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  if (typeof window !== "undefined") {
+    const distelleryBrandData = JSON.parse(
+      localStorage.getItem("distelleryBrandData")
+    );
+    const ReleaseData = JSON.parse(localStorage.getItem("releaseData"));
+    const dataArray = [];
+    if (distelleryBrandData && ReleaseData) {
+      // add id's to both distellerybrand and release Data
+      // distelleryData.distelleryId = dataArray.length;
+      // BrandData.brandId = distelleryData.distelleryId;
 
-  const distelleryBrandData = JSON.parse(localStorage.getItem('distelleryBrandData'));
-  const ReleaseData = JSON.parse(localStorage.getItem('releaseData'));
-  const dataArray = [];
-  if (distelleryBrandData && ReleaseData) {
-    // add id's to both distellerybrand and release Data
-    // distelleryData.distelleryId = dataArray.length;
-    // BrandData.brandId = distelleryData.distelleryId;
+      // add image to both distellerybrand and release Data
+      distelleryBrandData.distelleryBrandImg = "/Rectangle 24.jpg";
+      ReleaseData.releaseImg = "/Rectangle 24.jpg";
 
-    // add image to both distellerybrand and release Data
-    distelleryBrandData.distelleryBrandImg = "/Rectangle 24.jpg";
-    ReleaseData.releaseImg = "/Rectangle 24.jpg";
-
-    // add release Data object as an array in DistelleryBrand Data
-    distelleryBrandData.brandData = [ReleaseData]
-    dataArray.push(distelleryBrandData);
+      // add release Data object as an array in DistelleryBrand Data
+      distelleryBrandData.brandData = [ReleaseData];
+      dataArray.push(distelleryBrandData);
+    }
   }
-
   const handleOpenModal = () => {
     setOpenModal(true);
   };
@@ -45,17 +47,32 @@ const Page = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{
-        display: 'flex',
-        flexDirection: isMobile ? 'column-reverse' : '',
-        gap: isMobile ? 3 : '',
-        alignItems: 'center',
-        justifyContent: dataArray.length > 0 ? isMobile ? 'end' : 'end' : isMobile ? '' : 'space-between'
-      }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: isMobile ? "column-reverse" : "",
+          gap: isMobile ? 3 : "",
+          alignItems: "center",
+          justifyContent:
+            dataArray.length > 0
+              ? isMobile
+                ? "end"
+                : "end"
+              : isMobile
+              ? ""
+              : "space-between",
+        }}
+      >
         {/* If distilleries not found */}
         {dataArray.length === 0 && (
           <Box ml={5}>
-            <Typography variant="p" textTransform='uppercase' mr={isMobile ? 5 : 0}>No Brands to show</Typography>
+            <Typography
+              variant="p"
+              textTransform="uppercase"
+              mr={isMobile ? 5 : 0}
+            >
+              No Brands to show
+            </Typography>
           </Box>
         )}
 
@@ -64,13 +81,13 @@ const Page = () => {
             onClick={handleOpenModal}
             variant="contained"
             sx={{
-              backgroundColor: '#fff',
-              color: '#000',
-              textTransform: 'capitalize',
-              fontWeight: '600',
+              backgroundColor: "#fff",
+              color: "#000",
+              textTransform: "capitalize",
+              fontWeight: "600",
               borderRadius: 0,
-              '&:hover': {
-                backgroundColor: '#999',
+              "&:hover": {
+                backgroundColor: "#999",
               },
             }}
           >
@@ -81,7 +98,7 @@ const Page = () => {
 
       {/* Cards */}
       <Box>
-        <BrandCard dataArray={dataArray} isMobile={isMobile}/>
+        <BrandCard dataArray={dataArray} isMobile={isMobile} />
       </Box>
 
       <Modal open={openModal} onClose={handleCloseModal}>
@@ -100,8 +117,10 @@ const Page = () => {
           }}
         >
           {/* Brand Modal Form Component */}
-          <BrandsModalForm handleCloseModal={handleCloseModal} isMobile={isMobile}/>
-
+          <BrandsModalForm
+            handleCloseModal={handleCloseModal}
+            isMobile={isMobile}
+          />
         </Box>
       </Modal>
     </ThemeProvider>

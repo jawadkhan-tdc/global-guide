@@ -17,19 +17,23 @@ const Page = () => {
 
   const theme = createTheme(); // Create a theme instance
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  if (typeof window !== "undefined") {
+    const distelleryBrandReleaseData = JSON.parse(
+      localStorage.getItem("distelleryBrandReleaseData")
+    );
+    const dataArray = [];
+    if (distelleryBrandReleaseData) {
+      // add id's to both distellerybrand and release Data
+      // distelleryData.distelleryId = dataArray.length;
+      // BrandData.brandId = distelleryData.distelleryId;
 
-  const distelleryBrandReleaseData = JSON.parse(localStorage.getItem('distelleryBrandReleaseData'));
-  const dataArray = [];
-  if (distelleryBrandReleaseData) {
-    // add id's to both distellerybrand and release Data
-    // distelleryData.distelleryId = dataArray.length;
-    // BrandData.brandId = distelleryData.distelleryId;
+      // add image to both distellerybrand and release Data
+      distelleryBrandReleaseData.distelleryBrandReleaseImg =
+        "/Rectangle 24.jpg";
 
-    // add image to both distellerybrand and release Data
-    distelleryBrandReleaseData.distelleryBrandReleaseImg = "/Rectangle 24.jpg";
-
-    // push release data in array
-    dataArray.push(distelleryBrandReleaseData);
+      // push release data in array
+      dataArray.push(distelleryBrandReleaseData);
+    }
   }
 
   const handleOpenModal = () => {
@@ -42,17 +46,32 @@ const Page = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Box sx={{
-        display: 'flex',
-        flexDirection: isMobile ? 'column-reverse' : '',
-        gap: isMobile ? 3 : '',
-        alignItems: 'center',
-        justifyContent: dataArray.length > 0 ? isMobile ? 'end' : 'end' : isMobile ? '' : 'space-between'
-      }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: isMobile ? "column-reverse" : "",
+          gap: isMobile ? 3 : "",
+          alignItems: "center",
+          justifyContent:
+            dataArray.length > 0
+              ? isMobile
+                ? "end"
+                : "end"
+              : isMobile
+              ? ""
+              : "space-between",
+        }}
+      >
         {/* If distilleries not found */}
         {dataArray.length === 0 && (
           <Box ml={5}>
-            <Typography variant="p" textTransform='uppercase' mr={isMobile ? 5 : 0}>No Releases to show</Typography>
+            <Typography
+              variant="p"
+              textTransform="uppercase"
+              mr={isMobile ? 5 : 0}
+            >
+              No Releases to show
+            </Typography>
           </Box>
         )}
 
@@ -61,13 +80,13 @@ const Page = () => {
             onClick={handleOpenModal}
             variant="contained"
             sx={{
-              backgroundColor: '#fff',
-              color: '#000',
-              textTransform: 'capitalize',
-              fontWeight: '600',
+              backgroundColor: "#fff",
+              color: "#000",
+              textTransform: "capitalize",
+              fontWeight: "600",
               borderRadius: 0,
-              '&:hover': {
-                backgroundColor: '#999',
+              "&:hover": {
+                backgroundColor: "#999",
               },
             }}
           >
@@ -78,7 +97,7 @@ const Page = () => {
 
       {/* Cards */}
       <Box>
-        <ReleaseCard dataArray={dataArray} isMobile={isMobile}/>
+        <ReleaseCard dataArray={dataArray} isMobile={isMobile} />
       </Box>
 
       <Modal open={openModal} onClose={handleCloseModal}>
@@ -97,8 +116,10 @@ const Page = () => {
           }}
         >
           {/* Release Modal Form Component */}
-          <ReleaseModalForm handleCloseModal={handleCloseModal} isMobile={isMobile} />
-
+          <ReleaseModalForm
+            handleCloseModal={handleCloseModal}
+            isMobile={isMobile}
+          />
         </Box>
       </Modal>
     </ThemeProvider>
