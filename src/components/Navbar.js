@@ -1,4 +1,16 @@
-import { Box, Grid, Tab, Tabs, Typography, Drawer, IconButton, List, ListItem, ListItemText } from "@mui/material";
+"use client";
+import {
+  Box,
+  Grid,
+  Tab,
+  Tabs,
+  Typography,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
 import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
@@ -8,24 +20,27 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const router =useRouter();
+  const router = useRouter();
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
       return;
     }
     setDrawerOpen(open);
   };
 
   const handleMenuItemClick = (text) => {
-    if(pathname==="/B2C"){
-    router.push('/B2C/companies')}
-    else if(pathname==="/B2B"){
-    router.push('/B2B/companies')}
+    if (pathname === "/B2C") {
+      router.push("/B2C/companies");
+    } else if (pathname === "/B2B") {
+      router.push("/B2B/companies");
+    }
   };
-
 
   const list = () => (
     <Box
@@ -35,7 +50,7 @@ const Navbar = () => {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {['Companies'].map((text) => (
+        {["Companies"].map((text) => (
           <ListItem button key={text} onClick={() => handleMenuItemClick()}>
             <ListItemText primary={text} />
           </ListItem>
@@ -54,11 +69,19 @@ const Navbar = () => {
       }}
     >
       <Grid container alignItems="center" justifyContent="space-between">
-        <Grid item xs={6} sm={4} lg={3} sx={{ display: "flex", alignItems: "center", paddingLeft: "20px" }}>
+        <Grid
+          item
+          xs={6}
+          sm={4}
+          lg={3}
+          sx={{ display: "flex", alignItems: "center", paddingLeft: "20px" }}
+        >
           <IconButton onClick={toggleDrawer(true)}>
             <MenuIcon sx={{ color: "white", fontSize: 35, marginRight: 1 }} />
           </IconButton>
-          <BookmarkBorderIcon sx={{ color: "#070807", fontSize: 35, marginLeft: 1 }} />
+          <BookmarkBorderIcon
+            sx={{ color: "#070807", fontSize: 35, marginLeft: 1 }}
+          />
           <Tabs>
             <Tab label="Sign In" sx={{ color: "#070807" }} />
             <Tab label="Contact" sx={{ color: "#070807" }} />
@@ -66,7 +89,17 @@ const Navbar = () => {
         </Grid>
 
         {/* Center section */}
-        <Grid item xs={6} sm={4} lg={3} sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <Grid
+          item
+          xs={6}
+          sm={4}
+          lg={3}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Image src="/logo.png" alt="logo_img" width={50} height={30} />
           </Box>
@@ -76,9 +109,22 @@ const Navbar = () => {
         </Grid>
 
         {/* Right section */}
-        <Grid item xs={12} sm={4} lg={3} sx={{ display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: "20px" }}>
+        <Grid
+          item
+          xs={12}
+          sm={4}
+          lg={3}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            paddingRight: "20px",
+          }}
+        >
           <SearchIcon sx={{ color: "white", fontSize: 35, marginRight: 1 }} />
-          <BookmarkBorderIcon sx={{ color: "white", fontSize: 35, marginLeft: 1 }} />
+          <BookmarkBorderIcon
+            sx={{ color: "white", fontSize: 35, marginLeft: 1 }}
+          />
           <Tabs>
             <Tab label="Sign In" sx={{ color: "white" }} />
             <Tab label="Contact" sx={{ color: "white" }} />
