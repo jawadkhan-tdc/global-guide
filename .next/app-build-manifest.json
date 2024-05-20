@@ -25,7 +25,8 @@
     "/B2B/companies/brandDetail/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/B2B/companies/brandDetail/page.js"
+      "static/chunks/app/B2B/companies/brandDetail/page.js",
+      "static/css/app/B2B/companies/brandDetail/page.css"
     ],
     "/B2B/brands/page": [
       "static/chunks/webpack.js",
