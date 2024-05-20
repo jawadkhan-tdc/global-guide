@@ -3,7 +3,6 @@
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/page.css",
       "static/chunks/app/page.js"
     ],
     "/layout": [
@@ -11,10 +10,81 @@
       "static/chunks/main-app.js",
       "static/chunks/app/layout.js"
     ],
-    "/_not-found/page": [
+    "/B2B/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/css/app/B2B/page.css",
+      "static/chunks/app/B2B/page.js"
+    ],
+    "/B2B/companies/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/B2B/companies/page.css",
+      "static/chunks/app/B2B/companies/page.js"
+    ],
+    "/B2B/companies/brandDetail/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/B2B/companies/brandDetail/page.css",
+      "static/chunks/app/B2B/companies/brandDetail/page.js"
+    ],
+    "/B2B/brands/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/B2B/brands/page.js"
+    ],
+    "/B2B/release/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/B2B/release/page.js"
+    ],
+    "/B2B/merchant/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/B2B/merchant/page.js"
+    ],
+    "/B2C/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/B2C/page.css",
+      "static/chunks/app/B2C/page.js"
+    ],
+    "/B2C/companies/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/B2C/companies/page.css",
+      "static/chunks/app/B2C/companies/page.js"
+    ],
+    "/B2C/companies/brandDetail/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/B2C/companies/brandDetail/page.css",
+      "static/chunks/app/B2C/companies/brandDetail/page.js"
+    ],
+    "/B2C/release/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/B2C/release/page.js"
+    ],
+    "/B2C/merchant/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/B2C/merchant/page.js"
+    ],
+    "/adminhome/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/adminhome/page.js"
+    ],
+    "/distellery/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/distellery/page.js"
+    ],
+    "/company/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/company/page.js"
     ]
   }
 }

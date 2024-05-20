@@ -1,11 +1,11 @@
-import React from 'react';
-import Home from './home/page';
-import { Box } from '@mui/material';
+import React from "react";
+import { Box } from "@mui/material";
+import Dashboard1 from "@/components/Dashboard";
 
 function page() {
   return (
     <Box>
-      <Home />
+      <Dashboard1 />
     </Box>
   );
 }

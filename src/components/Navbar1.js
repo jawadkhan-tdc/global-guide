@@ -19,7 +19,7 @@ const   Navbar1 = () => {
   const [selectedMenu, setSelectedMenu] = useState(null);
   const [anchorEl, setAnchorEl] = useState(null);
  
-  const brandsMenuItem = { label: "Brands", route: "/brandDetail" };
+  const brandsMenuItem = { label: "Brands", route: "/companies" };
   const merchantsMenuItem = { label: "Merchants", route: "/merchantDetail" };
   const distilleriesMenuItem = { label: "Distilleries", route: "/distilleries" };
   const releaseMenuItem = { label: "Release", route: "/release" };

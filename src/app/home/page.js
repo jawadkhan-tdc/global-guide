@@ -1,5 +1,5 @@
 "use client"
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import React from "react";
 import Navbar from "../../components/Navbar";
 import Body1 from "./_components/Body1";
@@ -17,7 +17,6 @@ const page = () => {
   return (
     <Box>
       <Navbar/>
-      <Navbar1/>
       <Body1/>
       <Body2 />
       <Body3/>

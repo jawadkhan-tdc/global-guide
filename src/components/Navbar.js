@@ -1,11 +1,49 @@
-import { Box, Grid, Tab, Tabs, Typography } from "@mui/material";
-import React from "react";
+import { Box, Grid, Tab, Tabs, Typography, Drawer, IconButton, List, ListItem, ListItemText } from "@mui/material";
+import React, { useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import Image from "next/image";
 import SearchIcon from "@mui/icons-material/Search";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const router =useRouter();
+  const pathname = usePathname();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleDrawer = (open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
+
+  const handleMenuItemClick = (text) => {
+    if(pathname==="/B2C"){
+    router.push('/B2C/companies')}
+    else if(pathname==="/B2B"){
+    router.push('/B2B/companies')}
+  };
+
+
+  const list = () => (
+    <Box
+      sx={{ width: 250 }}
+      role="presentation"
+      onClick={toggleDrawer(false)}
+      onKeyDown={toggleDrawer(false)}
+    >
+      <List>
+        {['Companies'].map((text) => (
+          <ListItem button key={text} onClick={() => handleMenuItemClick()}>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
+
   return (
     <Box
       width={"100%"}
@@ -16,9 +54,10 @@ const Navbar = () => {
       }}
     >
       <Grid container alignItems="center" justifyContent="space-between">
-        {/* Left section */}
         <Grid item xs={6} sm={4} lg={3} sx={{ display: "flex", alignItems: "center", paddingLeft: "20px" }}>
-          <MenuIcon sx={{ color: "white", fontSize: 35, marginRight: 1 }} />
+          <IconButton onClick={toggleDrawer(true)}>
+            <MenuIcon sx={{ color: "white", fontSize: 35, marginRight: 1 }} />
+          </IconButton>
           <BookmarkBorderIcon sx={{ color: "#070807", fontSize: 35, marginLeft: 1 }} />
           <Tabs>
             <Tab label="Sign In" sx={{ color: "#070807" }} />
@@ -46,6 +85,10 @@ const Navbar = () => {
           </Tabs>
         </Grid>
       </Grid>
+
+      <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
+        {list()}
+      </Drawer>
     </Box>
   );
 };
