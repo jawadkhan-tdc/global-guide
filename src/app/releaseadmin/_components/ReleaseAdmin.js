@@ -37,7 +37,7 @@ const ReleaseAdmin = ({ handleCloseModal, isMobile }) => {
                 formDataToSend.append('image', file);
 
                 const imageResponse = await axios.post(
-                    "http://ec2-13-48-130-219.eu-north-1.compute.amazonaws.com/image/upload",
+                    "https://be.globalguide.thedevcorporate.com/image/upload",
                     formDataToSend,
                     {
                         headers: {
@@ -58,7 +58,7 @@ const ReleaseAdmin = ({ handleCloseModal, isMobile }) => {
                 console.log('form data is', formData);
 
                 const response = await axios.post(
-                    'http://ec2-13-48-130-219.eu-north-1.compute.amazonaws.com/release',
+                    'https://be.globalguide.thedevcorporate.com/release',
                     formData
                 );
 

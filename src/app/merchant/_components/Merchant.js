@@ -44,7 +44,7 @@ const Merchant = ({ handleCloseModal, isMobile }) => {
                 formDataToSend.append('image', file);
 
                 const imageResponse = await axios.post(
-                    "http://ec2-13-48-130-219.eu-north-1.compute.amazonaws.com/image/upload",
+                    "https://be.globalguide.thedevcorporate.com/image/upload",
                     formDataToSend,
                     {
                         headers: {
@@ -63,7 +63,7 @@ const Merchant = ({ handleCloseModal, isMobile }) => {
                 };
 
                 const distilleryResponse = await axios.post(
-                    'http://ec2-13-48-130-219.eu-north-1.compute.amazonaws.com/merchant',
+                    'https://be.globalguide.thedevcorporate.com/merchant',
                     distilleryData
                 );
 

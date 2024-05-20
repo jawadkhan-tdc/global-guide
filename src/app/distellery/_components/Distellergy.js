@@ -43,7 +43,7 @@ const Distillery = ({ handleCloseModal, isMobile }) => {
                 formDataToSend.append('image', file);
 
                 const imageResponse = await axios.post(
-                    "http://ec2-13-48-130-219.eu-north-1.compute.amazonaws.com/image/upload",
+                    "https://be.globalguide.thedevcorporate.com/image/upload",
                     formDataToSend,
                     {
                         headers: {
@@ -62,7 +62,7 @@ const Distillery = ({ handleCloseModal, isMobile }) => {
                 };
 
                 const distilleryResponse = await axios.post(
-                    'http://ec2-13-48-130-219.eu-north-1.compute.amazonaws.com/distillery',
+                    'https://be.globalguide.thedevcorporate.com/distillery',
                     distilleryData
                 );
 
@@ -78,7 +78,7 @@ const Distillery = ({ handleCloseModal, isMobile }) => {
                 };
 
                 const brandResponse = await axios.post(
-                    'http://ec2-13-48-130-219.eu-north-1.compute.amazonaws.com/brand',
+                    'https://be.globalguide.thedevcorporate.com/brand',
                     brandData
                 );
 

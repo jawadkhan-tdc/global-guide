@@ -1,7 +1,7 @@
 {
-  "/B2C/companies/brandDetail/page": "app/B2C/companies/brandDetail/page.js",
+  "/page": "app/page.js",
+  "/adminhome/page": "app/adminhome/page.js",
   "/distellery/page": "app/distellery/page.js",
   "/company/page": "app/company/page.js",
-  "/page": "app/page.js",
-  "/adminhome/page": "app/adminhome/page.js"
+  "/B2C/companies/brandDetail/page": "app/B2C/companies/brandDetail/page.js"
 }
