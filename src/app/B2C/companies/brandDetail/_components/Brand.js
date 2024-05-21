@@ -96,32 +96,14 @@ const Brand = ({ data }) => {
       <ThemeProvider theme={theme}>
         <Grid container spacing={isMobile ? 2 : 4}>
           <Grid p={isMobile ? 2 : 0} item xs={12} md={6}>
-            <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-              <Tabs
-                value={value}
-                onChange={handleChange}
-                aria-label="basic tabs example"
-                sx={{
-                  "& .MuiTabs-indicator": {
-                    color: "#000",
-                    backgroundColor: "white",
-                  },
-                }}
-              >
-                <Tab label={<Label name={"BRANDS"} />} {...a11yProps(0)} />
-                <Tab label={<Label name={"AMBASSADOR"} />} {...a11yProps(1)} />
-              </Tabs>
-            </Box>
-            <CustomTabPanel value={value} index={0}>
               <Box>
                 <BrandCard data={data} />
               </Box>
-            </CustomTabPanel>
-            <CustomTabPanel value={value} index={1}>
+            {/* <CustomTabPanel value={value} index={1}>
               <Box>
                 <BrandCard />
               </Box>
-            </CustomTabPanel>
+            </CustomTabPanel> */}
           </Grid>
           <Grid item xs={12} md={6}>
             <Box p={isMobile ? 3 : 6} sx={{ height: "100%" }}>
@@ -272,7 +254,7 @@ const Brand = ({ data }) => {
                 sx={{ backgroundColor: "#333" }}
                 width={isMobile ? 270 : 500}
                 borderRadius={2}
-                p={3}
+                p={1}
               >
                 <Box p={3}>
                   <Typography
@@ -291,6 +273,7 @@ const Brand = ({ data }) => {
                   >
                     <Box
                       width="33%"
+                      height={40}
                       display={"flex"}
                       justifyContent={"center"}
                       px={isMobile ? 2 : 3}
@@ -302,10 +285,14 @@ const Brand = ({ data }) => {
                         src="/bowmore-logo-white 2.png"
                         alt=""
                         width={isMobile ? 100 : 140}
+                        // height={isMobile ? 20 : 30}
                       />
                     </Box>
                     <Box
                       width="33%"
+                      height={40}
+                      display={"flex"}
+                      justifyContent={"center"}
                       px={isMobile ? 2 : 3}
                       py={isMobile ? 3 : 3}
                       borderRadius={4}
@@ -316,7 +303,7 @@ const Brand = ({ data }) => {
                         color={"white"}
                         variant={isMobile ? "body1" : "h6"}
                       >
-                        Explore the Brand{" "}
+                        Explore Brand{" "}
                       </Typography>
                     </Box>
                   </Box>

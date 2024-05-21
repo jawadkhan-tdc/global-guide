@@ -19,6 +19,10 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import PropTypes from "prop-types";
 import BrandCard from "./BrandCard";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import Image from "next/image";
+import EastIcon from '@mui/icons-material/East';
 
 function Label({ name }) {
   return (
@@ -74,14 +78,13 @@ function a11yProps(index) {
     "aria-controls": `simple-tabpanel-${index}`,
   };
 }
-const Brand = ({data}) => {
+const Brand = ({ data }) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   const router = useRouter();
-
 
   const handleReleaseDetailsPage = () => {
     router.push("/release/details");
@@ -119,7 +122,7 @@ const Brand = ({data}) => {
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
               <Box>
-                <BrandCard />
+                <BrandCard data={data} />
               </Box>
             </CustomTabPanel>
           </Grid>
@@ -131,44 +134,65 @@ const Brand = ({data}) => {
                 borderRadius={2}
                 p={3}
               >
-                <Typography
-                  variant="h5"
-                  fontWeight={700}
-                  gutterBottom
-                  color={"white"}
-                >
-                  POLLS
-                </Typography>
-                <Typography variant="body1" color={"#999"} gutterBottom>
-                  Which of proposed products you would prefer?
-                </Typography>
-                <Box>
-                  <FormControlLabel
-                    control={<Radio />}
-                    label="{Product A}"
-                    labelPlacement="end"
-                    sx={{ color: "#6D8190" }}
-                  />
-                  <FormControlLabel
-                    control={<Radio />}
-                    label="{Product B}"
-                    labelPlacement="end"
-                    sx={{ color: "#6D8190" }}
-                  />
+                <Box display={"flex"} justifyContent={"space-between"}>
+                  <Typography
+                    variant="h5"
+                    fontWeight={700}
+                    gutterBottom
+                    color={"white"}
+                  >
+                    POLLS
+                  </Typography>
+                  <Button sx={{ color: "#BA9775" }}>
+                    View All <EastIcon sx={{ color: "#BA9775" }} />{" "}
+                  </Button>
                 </Box>
-                <Box color={"white"}>
-                  <FormControlLabel
-                    control={<Radio />}
-                    label="{Product C}"
-                    labelPlacement="end"
-                    sx={{ color: "#6D8190" }}
-                  />
-                  <FormControlLabel
-                    control={<Radio />}
-                    label="{Product D}"
-                    labelPlacement="end"
-                    sx={{ color: "#6D8190" }}
-                  />
+                <Box
+                  borderBottom={"1px solid white"}
+                  display={"flex"}
+                  justifyContent={"space-between"}
+                >
+                  <Box gap={1} display={"flex"} flexDirection={"row"}>
+                    <Image src="/Group1111.png" height={22} width={24} />
+                    <Typography variant="body1" color={"grey"} gutterBottom>
+                      What would you prefer?
+                    </Typography>
+                  </Box>
+                  <Box>
+                    <PlayArrowIcon sx={{ color: "#BA9775" }} />
+                  </Box>
+                </Box>
+                <Box
+                  mt={2}
+                  borderBottom={"1px solid white"}
+                  display={"flex"}
+                  justifyContent={"space-between"}
+                >
+                  <Box gap={1} display={"flex"} flexDirection={"row"}>
+                    <Image src="/Group1111.png" height={22} width={24} />
+                    <Typography variant="body1" color={"grey"} gutterBottom>
+                      What is your favourite release?
+                    </Typography>
+                  </Box>
+                  <Box>
+                    <PlayArrowIcon sx={{ color: "#BA9775" }} />
+                  </Box>
+                </Box>
+                <Box
+                  mt={2}
+                  borderBottom={"1px solid white"}
+                  display={"flex"}
+                  justifyContent={"space-between"}
+                >
+                  <Box gap={1} display={"flex"} flexDirection={"row"}>
+                    <Image src="/Group1111.png" height={22} width={24} />
+                    <Typography variant="body1" color={"grey"} gutterBottom>
+                      What is your favourite release?
+                    </Typography>
+                  </Box>
+                  <Box>
+                    <PlayArrowIcon sx={{ color: "#BA9775" }} />
+                  </Box>
                 </Box>
               </Box>
               <Box
@@ -189,71 +213,59 @@ const Brand = ({data}) => {
                 <Typography variant="body1" gutterBottom color={"white"}>
                   Subscription renewal required
                 </Typography>
-                <Box mt={2} display={"flex"} justifyContent={"space-between"}>
-                  <Box>
-                    <img src="/Group 427319128.png" alt="" />
-                    <img
-                      style={{ marginLeft: "10px" }}
-                      src="/Group.png"
-                      alt=""
-                    />
+                <Box mt={2} display={"flex"} flexDirection={"column"}>
+                  <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
+                    
+                    <Box textAlign={"center"} >
+                      <Button sx={{color:"#BA9775"}}>Complete  </Button>
+                    </Box>
                   </Box>
-                  <Box gap={1} display={"flex"} justifyContent={"center"}>
-                    <img
-                      style={{ color: "darkgoldenrod" }}
-                      src="/Vector (1).png"
-                      alt=""
-                    />
-                    <Typography
-                      variant={isMobile ? "body1" : "h6"}
-                      sx={{ fontWeight: "600", color: "goldenrod" }}
-                    >
-                      Renew
-                    </Typography>
+                  <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
+                    <Box gap={2} display={"flex"}>
+                      <Image src="/Group 427319128.png" width={24} height={24}/>
+                      <Typography color={"white"}>Promotion Payment Required</Typography>
+                    </Box>
+                    <Box textAlign={"center"} >
+                      <Button sx={{color:"#BA9775"}}>Complete <EastIcon sx={{ color: "#BA9775" }} /> </Button>
+                    </Box>
                   </Box>
-                </Box>
-                <Box mt={2} display={"flex"} justifyContent={"space-between"}>
-                  <Box>
-                    <img src="/Group 427319128.png" alt="" />
-                    <img
-                      style={{ marginLeft: "6px" }}
-                      src="/Mask group.png"
-                      alt=""
-                    />
+                  <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
+                    <Box gap={2} display={"flex"}>
+                      <Image src="/Group 427319128.png" width={24} height={24}/>
+                      <Typography color={"white"}>New Release Review Added</Typography>
+                    </Box>
+                    <Box textAlign={"center"} >
+                      <Button sx={{color:"#BA9775"}}>View Posting</Button>
+                    </Box>
                   </Box>
-                  <Box gap={1} display={"flex"} justifyContent={"center"}>
-                    <img
-                      style={{ color: "darkgoldenrod" }}
-                      src="/Vector (1).png"
-                      alt=""
-                    />
-                    <Typography
-                      variant={isMobile ? "body1" : "h6"}
-                      sx={{ fontWeight: "600", color: "goldenrod" }}
-                    >
-                      Renew
-                    </Typography>
+                  <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
+                    <Box gap={2} display={"flex"}>
+                      <Image src="/Group 427319128.png" width={24} height={24}/>
+                      <Typography color={"white"}>Release info required</Typography>
+                    </Box>
+                    <Box textAlign={"center"} >
+                      <Button sx={{color:"#BA9775"}}>Add Details</Button>
+                    </Box>
                   </Box>
-                </Box>
-                <Box mt={2} display={"flex"} justifyContent={"space-between"}>
-                  <Box display={"flex"}>
-                    <img src="/Group 427319180.png" alt="" />
-                    <Typography
-                      ml={1}
-                      variant={isMobile ? "body1" : "h6"}
-                      color={"white"}
-                    >
-                      You review was published
-                    </Typography>
+                  <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
+                    <Box gap={2} display={"flex"}>
+                      <Image src="/Group 427319128.png" width={24} height={24}/>
+                      <Typography color={"white"}>You Release was published</Typography>
+                    </Box>
+                    <Box textAlign={"center"} >
+                      <Button sx={{color:"#BA9775"}}>View Posting</Button>
+                    </Box>
                   </Box>
-                  <Box gap={1} display={"flex"} justifyContent={"center"}>
-                    <Typography
-                      variant={isMobile ? "body1" : "h6"}
-                      sx={{ fontWeight: "600", color: "goldenrod" }}
-                    >
-                      View Posting
-                    </Typography>
+                  <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
+                    <Box gap={2} display={"flex"}>
+                      <Image src="/Group 427319128.png" width={24} height={24}/>
+                      <Typography color={"white"}>Distillery info required</Typography>
+                    </Box>
+                    <Box textAlign={"center"} >
+                      <Button sx={{color:"#BA9775"}}>Add Details</Button>
+                    </Box>
                   </Box>
+                  
                 </Box>
               </Box>
               <Box
@@ -271,49 +283,12 @@ const Brand = ({data}) => {
                 >
                   FAVORITE BRANDS
                 </Typography>
-                <Box display={"flex"} justifyContent={"space-between"} mt={2}>
-                  <Typography
-                    variant={isMobile ? "body1" : "h5"}
-                    color={"#999"}
-                  >
-                    Sherry oak 25 years old, 2018 release
-                  </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
-                    View
-                  </Button>
-                </Box>
-                <Box display={"flex"} justifyContent={"space-between"} mt={2}>
-                  <Typography
-                    variant={isMobile ? "body1" : "h5"}
-                    color={"#999"}
-                  >
-                    Sherry oak 25 years old, 2018 release
-                  </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
-                    View
-                  </Button>
-                </Box>
-                <Box display={"flex"} justifyContent={"space-between"} mt={2}>
-                  <Typography
-                    variant={isMobile ? "body1" : "h5"}
-                    color={"#999"}
-                  >
-                    Sherry oak 25 years old, 2018 release
-                  </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
-                    View
-                  </Button>
-                </Box>
-                <Box display={"flex"} justifyContent={"space-between"} mt={2}>
-                  <Typography
-                    variant={isMobile ? "body1" : "h5"}
-                    color={"#999"}
-                  >
-                    Sherry oak 25 years old, 2018 release
-                  </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
-                    View
-                  </Button>
+                <Box py={2} alignItems={'center'} gap={2} display={'flex'} justifyContent={'space-between'}>
+                  <Image src="/tab1.png" width={80} height={60}/>
+                  <Image src="/tab2.png" width={80} height={60}/>
+                  <Image src="/tab3.png" width={80} height={60}/>
+                  <Image src="/tab4.png" width={100} height={40}/>
+                  <Image src="/tab5.png" width={80} height={60}/>
                 </Box>
               </Box>
             </Box>

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardMedia,
@@ -10,9 +10,68 @@ import {
   Paper,
   createTheme,
   useMediaQuery,
+  Tabs,
+  Tab,
 } from "@mui/material";
 import { useRouter } from "next/navigation";
+import PropTypes from "prop-types";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+
+function Label({ name }) {
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        width: "100%",
+      }}
+    >
+      <Typography
+        sx={{
+          fontFamily: "Cormorant Infant",
+          color: "white",
+          fontSize: 20,
+        }}
+      >
+        {name}
+      </Typography>
+    </Box>
+  );
+}
+
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+CustomTabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
 
 const body3Image = [
   {
@@ -30,6 +89,12 @@ const body3Image = [
 ];
 export default function BrandCard({ loading, data }) {
   const router = useRouter();
+
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   const handleRelease = (data) => {
     router.push(
       `/B2C/release?data=${encodeURIComponent(JSON.stringify(data))}`
@@ -54,6 +119,29 @@ export default function BrandCard({ loading, data }) {
           alignItems={"center"}
           justifyContent={"center"}
         >
+          <Box
+            sx={{
+              borderBottom: 1,
+              borderColor: "divider",
+              display: "flex",
+              justifyContent: "flex-start",
+            }}
+          >
+            <Tabs
+              value={value}
+              onChange={handleChange}
+              aria-label="basic tabs example"
+              sx={{
+                "& .MuiTabs-indicator": {
+                  color: "#000",
+                  backgroundColor: "white",
+                },
+              }}
+            >
+              <Tab label={<Label name={"BRANDS"} />} {...a11yProps(0)} />
+              {/* <Tab label={<Label name={"AMBASSADOR"} />} {...a11yProps(1)} /> */}
+            </Tabs>
+          </Box>
           {data.brands.map((item, index) => {
             return (
               <Grid item xs={12} key={item.id}>
@@ -126,7 +214,7 @@ export default function BrandCard({ loading, data }) {
                       <Box
                         sx={{
                           cursor: "pointer",
-                          width: isMobile ? "70%" : "25%",
+                          width: isMobile ? "70%" : "35%",
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "space-around",
