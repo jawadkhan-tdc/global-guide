@@ -14,7 +14,11 @@ const BrandTab = ({ brands, companyId }) => {
   const router = useRouter();
 
   const handleAddBrandClick = () => {
-    router.push(`/brand?companyId=${encodeURIComponent(companyId)}`);
+    router.push(
+      `/brand?companyId=${encodeURIComponent(
+        companyId
+      )}&company=${encodeURIComponent(companyId)}`
+    );
   };
 
   const handleBrandClick = (id) => {
@@ -38,7 +42,11 @@ const BrandTab = ({ brands, companyId }) => {
         <Typography variant="h4" color={"white"} mt={4}>
           Brands Data
         </Typography>
-        <Button variant="contained" color="primary" onClick={handleAddBrandClick}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleAddBrandClick}
+        >
           Add Brand
         </Button>
       </div>

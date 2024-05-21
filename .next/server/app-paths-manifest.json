@@ -1,6 +1,7 @@
 {
-  "/companydata/page": "app/companydata/page.js",
-  "/page": "app/page.js",
   "/adminhome/page": "app/adminhome/page.js",
-  "/company/page": "app/company/page.js"
+  "/companydata/page": "app/companydata/page.js",
+  "/releasedata/page": "app/releasedata/page.js",
+  "/brand/page": "app/brand/page.js",
+  "/adminrelease/page": "app/adminrelease/page.js"
 }

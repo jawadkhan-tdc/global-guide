@@ -23,11 +23,22 @@
       "static/css/app/adminhome/page.css",
       "static/chunks/app/adminhome/page.js"
     ],
-    "/company/page": [
+    "/brand/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/company/page.css",
-      "static/chunks/app/company/page.js"
+      "static/css/app/brand/page.css",
+      "static/chunks/app/brand/page.js"
+    ],
+    "/releasedata/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/releasedata/page.js"
+    ],
+    "/adminrelease/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/adminrelease/page.css",
+      "static/chunks/app/adminrelease/page.js"
     ]
   }
 }
