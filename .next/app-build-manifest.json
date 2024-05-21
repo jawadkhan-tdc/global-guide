@@ -8,6 +8,7 @@
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
+      "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
     "/B2B/page": [
@@ -37,12 +38,65 @@
     "/B2B/release/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
+      "static/css/app/B2B/release/page.css",
       "static/chunks/app/B2B/release/page.js"
     ],
-    "/_not-found/page": [
+    "/B2C/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/css/app/B2C/page.css",
+      "static/chunks/app/B2C/page.js"
+    ],
+    "/B2C/companies/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/B2C/companies/page.css",
+      "static/chunks/app/B2C/companies/page.js"
+    ],
+    "/B2C/companies/brandDetail/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/B2C/companies/brandDetail/page.css",
+      "static/chunks/app/B2C/companies/brandDetail/page.js"
+    ],
+    "/B2C/release/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/B2C/release/page.js"
+    ],
+    "/B2C/release/details/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/B2C/release/details/page.js"
+    ],
+    "/B2C/brands/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/B2C/brands/page.js"
+    ],
+    "/company/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/company/page.css",
+      "static/chunks/app/company/page.js"
+    ],
+    "/companydata/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/companydata/page.css",
+      "static/chunks/app/companydata/page.js"
+    ],
+    "/adminhome/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/adminhome/page.css",
+      "static/chunks/app/adminhome/page.js"
+    ],
+    "/branddata/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/branddata/page.css",
+      "static/chunks/app/branddata/page.js"
     ]
   }
 }

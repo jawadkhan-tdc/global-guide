@@ -4,11 +4,14 @@ import axios from 'axios';
 import { Box, Button, TextField, Grid, Avatar, Typography, MenuItem } from "@mui/material";
 import CustomButton from "@/components/CustomButton";
 import { useFormik } from "formik";
-import { toast } from 'react-toastify';
-import { useRouter } from "next/navigation";
+import { toast, ToastContainer } from 'react-toastify';
+import { useRouter, useSearchParams } from "next/navigation";
 import CountriesList from "@/components/CountriesList";
+import api from "lib/services/api";
+import "react-toastify/dist/ReactToastify.css";
 
-const Merchant = ({ handleCloseModal, isMobile }) => {
+
+const Merchant = ({ isMobile }) => {
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
     const [changeContent, setChangeContent] = useState(null);
@@ -16,19 +19,14 @@ const Merchant = ({ handleCloseModal, isMobile }) => {
     const router = useRouter();
     const [countries] = useState(CountriesList);
 
+    const searchParams = useSearchParams()
+
 
     useEffect(() => {
-        const storedCompanyIdd = localStorage.getItem('companyId');
-        if (storedCompanyIdd) {
-            setCompanyId(parseInt(storedCompanyIdd));
-        }
+        const id = searchParams.get('companyId');
+        if (id)
+            setCompanyId(id)
     }, []);
-
-    useEffect(() => {
-        if (companyId !== null) {
-            formik.setFieldValue('companyId', companyId);
-        }
-    }, [companyId]);
 
     const formik = useFormik({
         initialValues: {
@@ -43,8 +41,8 @@ const Merchant = ({ handleCloseModal, isMobile }) => {
                 const formDataToSend = new FormData();
                 formDataToSend.append('image', file);
 
-                const imageResponse = await axios.post(
-                    "https://be.globalguide.thedevcorporate.com/image/upload",
+                const imageResponse = await api.post(
+                    "/image/upload",
                     formDataToSend,
                     {
                         headers: {
@@ -59,20 +57,18 @@ const Merchant = ({ handleCloseModal, isMobile }) => {
                     image: imageUrl,
                     name: data.name,
                     country: data.country,
-                    companyIdd: data.companyId, // Include the fetched company ID as companyIdd
+                    companyIdd: parseInt(companyId)
                 };
 
-                const distilleryResponse = await axios.post(
-                    'https://be.globalguide.thedevcorporate.com/merchant',
+                const distilleryResponse = await api.post(
+                    '/merchant',
                     distilleryData
                 );
 
                 console.log('New Merchant created:', distilleryResponse.data);
-
-                // Handle success
                 toast.success('Merchant created successfully!');
                 setError(null);
-                router.push('/brands');
+                router.push(`/adminhome?id=${encodeURIComponent(companyId)}`);
                 resetForm();
                 setFile(null);
             } catch (error) {
@@ -102,7 +98,7 @@ const Merchant = ({ handleCloseModal, isMobile }) => {
                 maxWidth: isMobile ? '300px' : '600px',
                 margin: 'auto',
             }}>
-               
+
                 <Box mb={2} width="100%" sx={{ textAlign: 'center' }}>
                     <Typography sx={{ fontWeight: 700, fontSize: "32px", color: "white", mb: 5, mt: 10 }}>Create Merchant</Typography>
                 </Box>
@@ -171,8 +167,9 @@ const Merchant = ({ handleCloseModal, isMobile }) => {
                 </Grid>
 
                 <Box mb={2} mt={5} width="100%" textAlign="center">
-                    <CustomButton onClick={formik.handleSubmit} btnName={changeContent ? 'Next' : 'Next'} width="100%" fontWeight={700} borderRadius={1} />
+                    <CustomButton onClick={formik.handleSubmit} btnName={changeContent ? 'Next' : 'Create'} width="100%" fontWeight={700} borderRadius={1} />
                 </Box>
+                <ToastContainer />
             </Box>
         </>
     )

@@ -1,26 +1,26 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
 import { Box, Button, TextField, Grid, Avatar, Typography, MenuItem, Select } from "@mui/material";
-import CloseIcon from '@mui/icons-material/Close';
-import CustomButton from "@/components/CustomButton";
 import { useFormik } from "formik";
-import { toast } from 'react-toastify';
-import { useRouter } from 'next/navigation';
+import { toast, ToastContainer } from 'react-toastify';
+import { useRouter, useSearchParams } from 'next/navigation';
 import CountriesList from "@/components/CountriesList";
+import api from "lib/services/api";
+import "react-toastify/dist/ReactToastify.css";
+import CustomButton from "@/components/CustomButton";
 
-const Brand = ({ handleCloseModal, isMobile }) => {
+const Brand = ({ isMobile }) => {
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
     const [companyId, setCompanyId] = useState(null);
     const [countries] = useState(CountriesList);
     const router = useRouter();
+    const searchParams = useSearchParams()
 
     useEffect(() => {
-        const storedCompanyId = localStorage.getItem('companyId');
-        if (storedCompanyId) {
-            setCompanyId(parseInt(storedCompanyId));
-        }
+        const id = searchParams.get('companyId');
+        if (id)
+            setCompanyId(id)
     }, []);
 
     const formik = useFormik({
@@ -38,8 +38,8 @@ const Brand = ({ handleCloseModal, isMobile }) => {
                 const formDataToSend = new FormData();
                 formDataToSend.append('image', file);
 
-                const imageResponse = await axios.post(
-                    "https://be.globalguide.thedevcorporate.com/image/upload",
+                const imageResponse = await api.post(
+                    "/image/upload",
                     formDataToSend,
                     {
                         headers: {
@@ -47,20 +47,19 @@ const Brand = ({ handleCloseModal, isMobile }) => {
                         }
                     }
                 );
-
                 const imageUrl = imageResponse?.data?.url;
 
                 const formData = {
                     image: imageUrl,
                     name: data.name,
                     country: data.country,
-                    companyId: data.companyId,
+                    companyId:  parseInt(companyId)
                 }
 
                 console.log('form data is', formData);
 
-                const response = await axios.post(
-                    'https://be.globalguide.thedevcorporate.com/brand',
+                const response = await api.post(
+                    '/brand',
                     formData
                 );
 
@@ -69,7 +68,7 @@ const Brand = ({ handleCloseModal, isMobile }) => {
 
                 const brandId = response.data.id;
                 localStorage.setItem('brandId', brandId);
-                router.push('/adminrelease');
+                router.push(`/adminhome?id=${encodeURIComponent(companyId)}`);
                 formik.resetForm();
                 setFile(null);
             } catch (error) {
@@ -172,8 +171,9 @@ const Brand = ({ handleCloseModal, isMobile }) => {
                 </Grid>
 
                 <Box mb={2} mt={5} width="100%" textAlign="center">
-                    <CustomButton onClick={formik.handleSubmit} btnName="Next" width="100%" fontWeight={700} borderRadius={1} />
+                    <CustomButton onClick={formik.handleSubmit} btnName="Create" width="100%" fontWeight={700} borderRadius={1} />
                 </Box>
+                <ToastContainer />
             </Box>
         </>
     );

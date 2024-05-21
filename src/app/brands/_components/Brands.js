@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { Box, Button, TextField, Grid, Avatar, Typography, MenuItem } from "@mui/material";
-import CloseIcon from '@mui/icons-material/Close';
 import CustomButton from "@/components/CustomButton";
 import { useFormik } from "formik";
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import CountriesList from "@/components/CountriesList";
+import api from "lib/services/api";
 
 const Brands = ({ handleCloseModal, isMobile }) => {
     const [file, setFile] = useState(null);
@@ -39,8 +39,8 @@ const Brands = ({ handleCloseModal, isMobile }) => {
                 const formDataToSend = new FormData();
                 formDataToSend.append('image', file);
 
-                const imageResponse = await axios.post(
-                    "https://be.globalguide.thedevcorporate.com/image/upload",
+                const imageResponse = await api.post(
+                    "image/upload",
                     formDataToSend,
                     {
                         headers: {
@@ -60,17 +60,16 @@ const Brands = ({ handleCloseModal, isMobile }) => {
 
                 console.log('form data is', formData);
 
-                const response = await axios.post(
-                    'https://be.globalguide.thedevcorporate.com/brand',
+                const response = await api.post(
+                    '/brand',
                     formData
                 );
 
                 console.log('New Brand created:', response.data);
                 toast.success('Brand created successfully!');
-
                 const brandId = response.data.id;
                 localStorage.setItem('brandId', brandId);
-                router.push('/releaseadmin');
+                router.push('/brandsdata');
                 formik.resetForm();
                 setFile(null);
             } catch (error) {
@@ -106,7 +105,7 @@ const Brands = ({ handleCloseModal, isMobile }) => {
                 margin: 'auto',
             }}>
                 <Box mb={2} width="100%" sx={{ textAlign: 'center' }}>
-                    <Typography sx={{ fontWeight: 700, fontSize: "32px", color: "white", mb: 5, mt: 10 }}>Create Brands</Typography>
+                    <Typography sx={{ fontWeight: 700, fontSize: "32px", color: "white", mb: 5, mt: 10 }}>Create Brand</Typography>
                 </Box>
 
                 <Box sx={{ display: "flex", gap: 4 }}>
@@ -173,8 +172,9 @@ const Brands = ({ handleCloseModal, isMobile }) => {
                 </Grid>
 
                 <Box mb={2} mt={5} width="100%" textAlign="center">
-                    <CustomButton onClick={formik.handleSubmit} btnName="Next" width="100%" fontWeight={700} borderRadius={1} />
+                    <CustomButton onClick={formik.handleSubmit} btnName="Create" width="100%" fontWeight={700} borderRadius={1} />
                 </Box>
+                <ToastContainer />
             </Box>
         </>
     );

@@ -1,10 +1,10 @@
 import React from 'react'
-import ReleaseAdmin from './_components/ReleaseAdmin'
+import ReleasesAdmin from './_components/ReleasesAdmin'
 
 function page() {
     return (
         <div>
-            <ReleaseAdmin />
+            <ReleasesAdmin />
         </div>
     )
 }

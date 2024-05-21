@@ -1,33 +1,29 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
 import { Box, Button, TextField, Grid, Avatar, Typography, Select, MenuItem } from "@mui/material";
 import CustomButton from "@/components/CustomButton";
 import { useFormik } from "formik";
-import { toast } from 'react-toastify';
-import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from 'react-toastify';
+import { useRouter, useSearchParams } from "next/navigation";
 import CountriesList from "@/components/CountriesList";
+import 'react-toastify/dist/ReactToastify.css';
+import api from "lib/services/api";
 
-const Distillery = ({ handleCloseModal, isMobile }) => {
+const Distillery = ({ isMobile }) => {
     const [file, setFile] = useState(null);
     const [error, setError] = useState(null);
     const [changeContent, setChangeContent] = useState(null);
-    const [companyId, setCompanyId] = useState(null);
+    const [companyId, setCompanyId] = useState(0);
     const router = useRouter();
-    const [countries] = useState(CountriesList); 
+    const [countries] = useState(CountriesList);
+    const searchParams = useSearchParams()
 
     useEffect(() => {
-        const storedCompanyId = localStorage.getItem('companyId');
-        if (storedCompanyId) {
-            setCompanyId(parseInt(storedCompanyId));
-        }
+        const id = searchParams.get('companyId');
+        if (id)
+            setCompanyId(id)
     }, []);
 
-    useEffect(() => {
-        if (companyId !== null) {
-            formik.setFieldValue('companyId', companyId);
-        }
-    }, [companyId]);
 
     const formik = useFormik({
         initialValues: {
@@ -36,14 +32,15 @@ const Distillery = ({ handleCloseModal, isMobile }) => {
             country: '',
             companyId: companyId || 0,
         },
+
         enableReinitialize: true,
         onSubmit: async (data, { resetForm }) => {
             try {
                 const formDataToSend = new FormData();
                 formDataToSend.append('image', file);
 
-                const imageResponse = await axios.post(
-                    "https://be.globalguide.thedevcorporate.com/image/upload",
+                const imageResponse = await api.post(
+                    "/image/upload",
                     formDataToSend,
                     {
                         headers: {
@@ -58,15 +55,17 @@ const Distillery = ({ handleCloseModal, isMobile }) => {
                     image: imageUrl,
                     name: data.name,
                     country: data.country,
-                    companyId: data.companyId,
+                    companyId: parseInt(companyId),
                 };
 
-                const distilleryResponse = await axios.post(
-                    'https://be.globalguide.thedevcorporate.com/distillery',
+                const distilleryResponse = await api.post(
+                    '/distillery',
                     distilleryData
                 );
 
                 console.log('New Distillery created:', distilleryResponse.data);
+                toast.success('Distillery created successfully!');
+                router.push(`/adminhome?id=${encodeURIComponent(companyId)}`);
 
                 const brandData = {
                     image: imageUrl,
@@ -77,20 +76,18 @@ const Distillery = ({ handleCloseModal, isMobile }) => {
                     merchantId: null,
                 };
 
-                const brandResponse = await axios.post(
-                    'https://be.globalguide.thedevcorporate.com/brand',
+                const brandResponse = await api.post(
+                    '/brand',
                     brandData
                 );
 
                 console.log('New Brand created:', brandResponse.data);
-                toast.success('Brand created successfully!');
                 setError(null);
-                router.push('/brand');
                 resetForm();
                 setFile(null);
             } catch (error) {
                 console.error('Error creating Distillery or Brand:', error);
-                setError(error.message || 'An error occurred while creating the Brand.');
+                toast.error(error.message || 'An error occurred while creating the Brand.');
             }
         }
     });
@@ -148,6 +145,8 @@ const Distillery = ({ handleCloseModal, isMobile }) => {
                             name="name"
                             value={formik.values.name}
                             onChange={handleChange}
+                            error={formik.touched.name && Boolean(formik.errors.name)}
+                            helperText={formik.touched.name && formik.errors.name}
                             fullWidth
                             sx={{ backgroundColor: 'white', borderRadius: '5px', mt: 5 }}
                         />
@@ -159,6 +158,8 @@ const Distillery = ({ handleCloseModal, isMobile }) => {
                             name="country"
                             value={formik.values.country}
                             onChange={handleChange}
+                            error={formik.touched.country && Boolean(formik.errors.country)}
+                            helperText={formik.touched.country && formik.errors.country}
                             fullWidth
                             sx={{ backgroundColor: 'white', borderRadius: '5px', mt: 2 }}
                         >
@@ -183,12 +184,12 @@ const Distillery = ({ handleCloseModal, isMobile }) => {
                 </Grid>
 
                 <Box mb={2} mt={5} width="100%" textAlign="center">
-                    <CustomButton onClick={formik.handleSubmit} btnName={changeContent ? 'Next' : 'Next'} width="100%" fontWeight={700} borderRadius={1} />
+                    <CustomButton onClick={formik.handleSubmit} btnName={changeContent ? 'Next' : 'Create'} width="100%" fontWeight={700} borderRadius={1} />
                 </Box>
+                <ToastContainer />
             </Box>
         </>
     )
 }
 
 export default Distillery;
-

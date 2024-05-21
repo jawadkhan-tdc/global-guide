@@ -1,3 +1,4 @@
+"use client"
 import api from "lib/services/api";
 import React, { useEffect, useState } from "react";
 import {
@@ -29,7 +30,7 @@ const ListOfComapanies = () => {
   }, []);
 
   const handleBrand = (id) => {
-    router.push(`companies/brandDetail?id=${encodeURIComponent(id)}`);
+    router.push(`/B2B/companies/brandDetail?id=${encodeURIComponent(id)}`);
   };
 
   return (

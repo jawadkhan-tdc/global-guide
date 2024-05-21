@@ -1,12 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import axios from 'axios';
 import { Box, Button, TextField, Grid, Avatar, Typography } from "@mui/material";
-import CloseIcon from '@mui/icons-material/Close';
 import CustomButton from "@/components/CustomButton";
 import { useFormik } from "formik";
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import { useRouter } from "next/navigation";
+import api from "lib/services/api";
+import "react-toastify/dist/ReactToastify.css";
 
 const AdminRelease = ({ handleCloseModal, isMobile }) => {
     const [file, setFile] = useState(null);
@@ -30,14 +30,14 @@ const AdminRelease = ({ handleCloseModal, isMobile }) => {
             country: '',
             brandId: brandId || 0,
         },
-        enableReinitialize: true,  // Reinitialize formik when companyId or brandId changes
+        enableReinitialize: true,
         onSubmit: async (data) => {
             try {
                 const formDataToSend = new FormData();
                 formDataToSend.append('image', file);
 
-                const imageResponse = await axios.post(
-                    "https://be.globalguide.thedevcorporate.com/image/upload",
+                const imageResponse = await api.post(
+                    "/image/upload",
                     formDataToSend,
                     {
                         headers: {
@@ -57,14 +57,14 @@ const AdminRelease = ({ handleCloseModal, isMobile }) => {
 
                 console.log('form data is', formData);
 
-                const response = await axios.post(
-                    'https://be.globalguide.thedevcorporate.com/release',
+                const response = await api.post(
+                    '/release',
                     formData
                 );
 
                 console.log('New Release created:', response.data);
                 formik.resetForm();
-                router.push("/adminhome")
+                router.push("/releasedata")
                 toast.success('Release created successfully!');
                 setError(null);
             } catch (error) {
@@ -153,7 +153,7 @@ const AdminRelease = ({ handleCloseModal, isMobile }) => {
                             sx={{ backgroundColor: 'white', borderRadius: '5px', mt: 5 }}
                         />
                     </Grid>
-                    <Grid item xs={12} md={12}>
+                    {/* <Grid item xs={12} md={12}>
                         <TextField
                             label="Country"
                             name="country"
@@ -162,7 +162,7 @@ const AdminRelease = ({ handleCloseModal, isMobile }) => {
                             fullWidth
                             sx={{ backgroundColor: 'white', borderRadius: '5px', mt: 2 }}
                         />
-                    </Grid>
+                    </Grid> */}
                     {/* <Grid item xs={12} md={12}>
                         <TextField
                             label="brandId"
@@ -180,6 +180,7 @@ const AdminRelease = ({ handleCloseModal, isMobile }) => {
                 <Box mb={2} mt={5} width="100%" textAlign="center">
                     <CustomButton onClick={formik.handleSubmit} btnName={changeContent ? 'Create' : 'Create'} width="100%" fontWeight={700} borderRadius={1} />
                 </Box>
+                <ToastContainer />
             </Box>
         </>
     )

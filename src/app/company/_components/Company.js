@@ -1,16 +1,17 @@
 "use client";
 import React, { useState } from "react";
-import axios from 'axios';
 import { Box, Button, TextField, Grid, Avatar, Typography, MenuItem, Select } from "@mui/material";
-import CloseIcon from '@mui/icons-material/Close';
 import CustomButton from "@/components/CustomButton";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import CountriesList from "@/components/CountriesList";
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import api from "lib/services/api";
 
 const Company = ({ handleCloseModal, isMobile }) => {
     const [file, setFile] = useState(null);
-    const [countries] = useState(CountriesList); 
+    const [countries] = useState(CountriesList);
 
     const [error, setError] = useState(null);
     const [changeContent, setChangeContent] = useState(false);
@@ -26,8 +27,8 @@ const Company = ({ handleCloseModal, isMobile }) => {
                 const formDataToSend = new FormData();
                 formDataToSend.append('image', file);
 
-                const imageResponse = await axios.post(
-                    "https://be.globalguide.thedevcorporate.com/image/upload",
+                const imageResponse = await api.post(
+                    "image/upload",
                     formDataToSend,
                     {
                         headers: {
@@ -46,8 +47,8 @@ const Company = ({ handleCloseModal, isMobile }) => {
 
                 console.log('form data is', formData)
 
-                const response = await axios.post(
-                    'https://be.globalguide.thedevcorporate.com/company',
+                const response = await api.post(
+                    '/company',
                     formData
                 );
 
@@ -55,12 +56,15 @@ const Company = ({ handleCloseModal, isMobile }) => {
                 const companyId = response?.data?.id;
                 console.log('companyId', companyId);
                 localStorage.setItem('companyId', companyId);
-                router.push('/adminhome')
+                toast.success('Company created successfully!');
+                router.push('/companydata')
                 resetForm();
                 setFile(null);
+                setError(null);
             } catch (error) {
                 console.error('Error creating Company:', error);
                 setError(error.message || 'An error occurred while creating the Company.');
+                toast.error('An error occurred while creating the Company.');
             }
         }
     })
@@ -160,8 +164,9 @@ const Company = ({ handleCloseModal, isMobile }) => {
 
                 {/* Next Button */}
                 <Box mb={2} mt={5} width="100%" textAlign="center">
-                    <CustomButton onClick={formik.handleSubmit} btnName={changeContent ? 'Next' : 'Next'} width="100%" fontWeight={700} borderRadius={1} />
+                    <CustomButton onClick={formik.handleSubmit} btnName={changeContent ? 'Next' : 'Create'} width="100%" fontWeight={700} borderRadius={1} />
                 </Box>
+                <ToastContainer />
             </Box>
         </>
     );
