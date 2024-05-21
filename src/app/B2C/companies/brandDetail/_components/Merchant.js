@@ -19,10 +19,8 @@ import MerchantCard from "./MerchantCard";
 
 const Merchant = ({ data, loading }) => {
   const router = useRouter();
-  
+
   const theme = createTheme();
-
-
 
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -34,7 +32,7 @@ const Merchant = ({ data, loading }) => {
             <MerchantCard data={data} loading={loading} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Box p={isMobile ? 3 : 6} sx={{ height: "100%" }}>
+            <Box p={isMobile ? 3 : 0} sx={{ height: "100%" }}>
               <Box
                 sx={{ backgroundColor: "#333" }}
                 width={isMobile ? 270 : 500}
@@ -110,7 +108,12 @@ const Merchant = ({ data, loading }) => {
                   </Box>
                   <Box gap={1} display={"flex"} justifyContent={"center"}>
                     <img
-                      style={{ color: "darkgoldenrod" }}
+                      style={{
+                        color: "darkgoldenrod",
+                        height: 25,
+                        width: 25,
+                        marginRight: 5,
+                      }}
                       src="/Vector (1).png"
                       alt=""
                     />
@@ -133,7 +136,12 @@ const Merchant = ({ data, loading }) => {
                   </Box>
                   <Box gap={1} display={"flex"} justifyContent={"center"}>
                     <img
-                      style={{ color: "darkgoldenrod" }}
+                      style={{
+                        color: "darkgoldenrod",
+                        height: 25,
+                        width: 25,
+                        marginRight: 5,
+                      }}
                       src="/Vector (1).png"
                       alt=""
                     />

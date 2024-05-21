@@ -13,17 +13,124 @@ import {
   Box,
   Radio,
   FormControlLabel,
+  Autocomplete,
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
-
-
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import Navbar1 from "@/components/Navbar1";
+import CustomAutocomplete from "@/components/CustomAutocomplete";
 const Page = () => {
+  const router = useRouter();
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const array = [
+    {
+      id: 1,
+      image: "/Rectangle 24.jpg",
+      title: "Sherry oak 25 years old, 2018 release",
+      name: "The Macallan",
+      volume: "Abv : 43% | Volume : 750ml",
+      rating: "5.0 Rating • 753 Reviews",
+    },
+    {
+      id: 2,
+      image: "/Rectangle 36.png",
+      title: "Sherry oak 25 years old, 2018 release",
+      name: "The Macallan",
+      volume: "Abv : 43% | Volume : 750ml",
+      rating: "5.0 Rating • 753 Reviews",
+    },
+    {
+      id: 3,
+      image: "/Group 102.png",
+      title: "Sherry oak 25 years old, 2018 release",
+      name: "The Macallan",
+      volume: "Abv : 43% | Volume : 750ml",
+      rating: "5.0 Rating • 753 Reviews",
+    },
+    {
+      id: 4,
+      image: "/Rectangle 24.jpg",
+      title: "Sherry oak 25 years old, 2018 release",
+      name: "The Macallan",
+      volume: "Abv : 43% | Volume : 750ml",
+      rating: "5.0 Rating • 753 Reviews",
+    },
+    {
+      id: 5,
+      image: "/Rectangle 36.png",
+      title: "Sherry oak 25 years old, 2018 release",
+      name: "The Macallan",
+      volume: "Abv : 43% | Volume : 750ml",
+      rating: "5.0 Rating • 753 Reviews",
+    },
+    {
+      id: 6,
+      image: "/Group 102.png",
+      title: "Sherry oak 25 years old, 2018 release",
+      name: "The Macallan",
+      volume: "Abv : 43% | Volume : 750ml",
+      rating: "5.0 Rating • 753 Reviews",
+    },
+    {
+      id: 7,
+      image: "/Rectangle 24.jpg",
+      title: "Sherry oak 25 years old, 2018 release",
+      name: "The Macallan",
+      volume: "Abv : 43% | Volume : 750ml",
+      rating: "5.0 Rating • 753 Reviews",
+    },
+    {
+      id: 8,
+      image: "/Rectangle 36.png",
+      title: "Sherry oak 25 years old, 2018 release",
+      name: "The Macallan",
+      volume: "Abv : 43% | Volume : 750ml",
+      rating: "5.0 Rating • 753 Reviews",
+    },
+    {
+      id: 9,
+      image: "/Group 102.png",
+      title: "Sherry oak 25 years old, 2018 release",
+      name: "The Macallan",
+      volume: "Abv : 43% | Volume : 750ml",
+      rating: "5.0 Rating • 753 Reviews",
+    },
+    {
+      id: 10,
+      image: "/Rectangle 24.jpg",
+      title: "Sherry oak 25 years old, 2018 release",
+      name: "The Macallan",
+      volume: "Abv : 43% | Volume : 750ml",
+      rating: "5.0 Rating • 753 Reviews",
+    },
+    {
+      id: 11,
+      image: "/Rectangle 36.png",
+      title: "Sherry oak 25 years old, 2018 release",
+      name: "The Macallan",
+      volume: "Abv : 43% | Volume : 750ml",
+      rating: "5.0 Rating • 753 Reviews",
+    },
+    {
+      id: 12,
+      image: "/Group 102.png",
+      title: "Sherry oak 25 years old, 2018 release",
+      name: "The Macallan",
+      volume: "Abv : 43% | Volume : 750ml",
+      rating: "5.0 Rating • 753 Reviews",
+    },
+  ];
+
+  const handleReleaseDetailsPage = () => {
+    router.push("/release/details");
+  };
+
   const [releaseData, setReleaseData] = useState([]);
-  const [loading,setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    
     const queryParams = new URLSearchParams(window.location.search);
     const dataParam = queryParams.get("data");
 
@@ -31,294 +138,236 @@ const Page = () => {
       const decodedData = decodeURIComponent(dataParam);
       const parsedData = JSON.parse(decodedData);
       setReleaseData(parsedData);
-      setLoading(false)
+      setLoading(false);
     }
   }, []);
 
   const theme = createTheme();
-
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Box>
+    <ThemeProvider theme={theme}>
       <Navbar />
-      <ThemeProvider theme={theme}>
-        <Grid container spacing={isMobile ? 2 : 4}>
-          <Grid p={isMobile ? 2 : 0} item xs={12} md={6}>
-            <Box>{loading ? (
-        <Typography>loading</Typography>
-      ) : (
-        <Box>
-          {releaseData.map((brandDetails) => {
-            return (
-              <Card sx={{ display: "flex", backgroundColor: "black", mt: 2 }}>
-                <CardMedia
-                  component="img"
-                  sx={{ width: 151, height: 150 }}
-                  image={brandDetails.image}
-                  alt="Live from space album cover"
-                />
-                <Box
+      <Navbar1 />
+      <Grid container spacing={isMobile ? 2 : 4}>
+        <Grid
+          sx={{ height: "100%", backgroundColor: "#333" }}
+          mt={4}
+          p={isMobile ? 2 : 4}
+          item
+          xs={12}
+          md={12}
+        >
+          <Box
+            mt={isMobile ? 2 : 2}
+            borderRadius={2}
+            ml={isMobile ? 0 : 2.7}
+            p={isMobile ? 0 : 0}
+            px={isMobile ? 0 : 2}
+            height={"100%"}
+            // sx={{ backgroundColor: "#111" }}
+          >
+            <Box
+              p={2}
+              borderBottom={"2px solid white"}
+              display={"flex"}
+              justifyContent={"space-between"}
+            >
+              <Box
+                gap={isMobile ? 0 : 4}
+                color={"grey"}
+                display={"flex"}
+                flexDirection={isMobile ? "column" : "row"}
+              >
+                <Typography
+                  variant={isMobile ? "body1" : "h5"}
+                  p={isMobile ? 1.1 : 0}
+                  fontWeight={400}
+                  gutterBottom
+                >
+                  RELEASES
+                </Typography>
+                <Typography
+                  variant={isMobile ? "body1" : "h5"}
+                  p={isMobile ? 1.1 : 0}
+                  fontWeight={400}
+                  gutterBottom
+                >
+                  DRAFTS
+                </Typography>
+                <Typography
+                  variant={isMobile ? "body1" : "h5"}
+                  p={isMobile ? 1.1 : 0}
+                  fontWeight={400}
+                  gutterBottom
+                >
+                  ARCHIEVED
+                </Typography>
+                <Typography
+                  variant={isMobile ? "body1" : "h5"}
+                  p={isMobile ? 1.1 : 0}
+                  fontWeight={400}
+                  gutterBottom
+                >
+                  PENDING REVIEWS
+                </Typography>
+              </Box>
+              <Box
+                display={"flex"}
+                flexDirection={isMobile ? "column" : "row"}
+                gap={isMobile ? 3 : 5}
+                justifyContent={isMobile ? "start" : "space-between"}
+              >
+                <Button
+                  variant="outlined"
                   sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    width: "100%",
+                    border: "1px solid #BA9775",
+                    color: "#fff",
+                    textTransform: "none",
+                    fontWeight: "700",
+                    "&:hover": {
+                      border: "1px solid #BA9775",
+                      backgroundColor: "#111",
+                    },
                   }}
                 >
-                  <CardContent sx={{ flex: "1 0 auto" }}>
-                    <Typography component="div" variant="h5" color={"white"}>
-                      {brandDetails.name}
-                    </Typography>
-                    <Box
-                      sx={{ display: "flex", justifyContent: "space-between" }}
-                    >
-                      <Typography
-                        variant="subtitle1"
-                        component="div"
-                        color={"white"}
-                      >
-                        {brandDetails.country}
-                      </Typography>
-                      <Typography
-                        variant="subtitle1"
-                        component="div"
-                        color={"white"}
-                      >
-                        Est. 1897
-                      </Typography>
-                      <Typography
-                        variant="subtitle1"
-                        component="div"
-                        color={"white"}
-                      >
-                        5 Releases
-                      </Typography>
-                    </Box>
-                    <Typography color={"white"}>attherate@gmail.com</Typography>
-                    <Box>
-                      <Button
-                        variant="contained"
-                        sx={{
-                          backgroundColor: "goldenrod",
-                          borderRadius: "none",
-                          color: "white",
-                          position: "relative",
-                          top: "10px",
-                          left: "70%",
-                          width: "fit-content",
-                          fontWeight: "600",
-                        }}
-                      >
-                        Edit
-                      </Button>
-                    </Box>
-                  </CardContent>
-                </Box>
-              </Card>
-            );
-          })}
-        </Box>
-      )}</Box>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Box p={isMobile ? 3 : 6} sx={{ height: "100%" }}>
-              <Box
-                sx={{ backgroundColor: "#333" }}
-                width={isMobile ? 270 : 500}
-                borderRadius={2}
-                p={3}
-              >
-                <Typography
-                  variant="h5"
-                  fontWeight={700}
-                  gutterBottom
-                  color={"white"}
+                  Importing Catalogue Data
+                </Button>
+                <Button
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "#BA9775",
+                    color: "#fff",
+                    textTransform: "none",
+                    fontWeight: "700",
+                    "&:hover": {
+                      backgroundColor: "#BA9775",
+                      color: "white",
+                    },
+                  }}
                 >
-                  POLLS
-                </Typography>
-                <Typography variant="body1" color={"#999"} gutterBottom>
-                  Which of proposed products you would prefer?
-                </Typography>
-                <Box>
-                  <FormControlLabel
-                    control={<Radio />}
-                    label="{Product A}"
-                    labelPlacement="end"
-                    sx={{ color: "#6D8190" }}
-                  />
-                  <FormControlLabel
-                    control={<Radio />}
-                    label="{Product B}"
-                    labelPlacement="end"
-                    sx={{ color: "#6D8190" }}
-                  />
-                </Box>
-                <Box color={"white"}>
-                  <FormControlLabel
-                    control={<Radio />}
-                    label="{Product C}"
-                    labelPlacement="end"
-                    sx={{ color: "#6D8190" }}
-                  />
-                  <FormControlLabel
-                    control={<Radio />}
-                    label="{Product D}"
-                    labelPlacement="end"
-                    sx={{ color: "#6D8190" }}
-                  />
-                </Box>
-              </Box>
-              <Box
-                mt={2}
-                sx={{ backgroundColor: "#333" }}
-                width={isMobile ? 270 : 500}
-                borderRadius={2}
-                p={3}
-              >
-                <Typography
-                  variant="h5"
-                  fontWeight={700}
-                  gutterBottom
-                  color={"white"}
-                >
-                  3 NOTIFICATIONS
-                </Typography>
-                <Typography variant="body1" gutterBottom color={"white"}>
-                  Subscription renewal required
-                </Typography>
-                <Box mt={2} display={"flex"} justifyContent={"space-between"}>
-                  <Box>
-                    <img src="/Group 427319128.png" alt="" />
-                    <img
-                      style={{ marginLeft: "10px" }}
-                      src="/Group.png"
-                      alt=""
-                    />
-                  </Box>
-                  <Box gap={1} display={"flex"} justifyContent={"center"}>
-                    <img
-                      style={{ color: "darkgoldenrod" }}
-                      src="/Vector (1).png"
-                      alt=""
-                    />
-                    <Typography
-                      variant={isMobile ? "body1" : "h6"}
-                      sx={{ fontWeight: "600", color: "goldenrod" }}
-                    >
-                      Renew
-                    </Typography>
-                  </Box>
-                </Box>
-                <Box mt={2} display={"flex"} justifyContent={"space-between"}>
-                  <Box>
-                    <img src="/Group 427319128.png" alt="" />
-                    <img
-                      style={{ marginLeft: "6px" }}
-                      src="/Mask group.png"
-                      alt=""
-                    />
-                  </Box>
-                  <Box gap={1} display={"flex"} justifyContent={"center"}>
-                    <img
-                      style={{ color: "darkgoldenrod" }}
-                      src="/Vector (1).png"
-                      alt=""
-                    />
-                    <Typography
-                      variant={isMobile ? "body1" : "h6"}
-                      sx={{ fontWeight: "600", color: "goldenrod" }}
-                    >
-                      Renew
-                    </Typography>
-                  </Box>
-                </Box>
-                <Box mt={2} display={"flex"} justifyContent={"space-between"}>
-                  <Box display={"flex"}>
-                    <img src="/Group 427319180.png" alt="" />
-                    <Typography
-                      ml={1}
-                      variant={isMobile ? "body1" : "h6"}
-                      color={"white"}
-                    >
-                      You review was published
-                    </Typography>
-                  </Box>
-                  <Box gap={1} display={"flex"} justifyContent={"center"}>
-                    <Typography
-                      variant={isMobile ? "body1" : "h6"}
-                      sx={{ fontWeight: "600", color: "goldenrod" }}
-                    >
-                      View Posting
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-              <Box
-                mt={2}
-                sx={{ backgroundColor: "#333" }}
-                width={isMobile ? 270 : 500}
-                borderRadius={2}
-                p={3}
-              >
-                <Typography
-                  variant="h5"
-                  fontWeight={700}
-                  gutterBottom
-                  color={"white"}
-                >
-                  FAVORITE BRANDS
-                </Typography>
-                <Box display={"flex"} justifyContent={"space-between"} mt={2}>
-                  <Typography
-                    variant={isMobile ? "body1" : "h5"}
-                    color={"#999"}
-                  >
-                    Sherry oak 25 years old, 2018 release
-                  </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
-                    View
-                  </Button>
-                </Box>
-                <Box display={"flex"} justifyContent={"space-between"} mt={2}>
-                  <Typography
-                    variant={isMobile ? "body1" : "h5"}
-                    color={"#999"}
-                  >
-                    Sherry oak 25 years old, 2018 release
-                  </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
-                    View
-                  </Button>
-                </Box>
-                <Box display={"flex"} justifyContent={"space-between"} mt={2}>
-                  <Typography
-                    variant={isMobile ? "body1" : "h5"}
-                    color={"#999"}
-                  >
-                    Sherry oak 25 years old, 2018 release
-                  </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
-                    View
-                  </Button>
-                </Box>
-                <Box display={"flex"} justifyContent={"space-between"} mt={2}>
-                  <Typography
-                    variant={isMobile ? "body1" : "h5"}
-                    color={"#999"}
-                  >
-                    Sherry oak 25 years old, 2018 release
-                  </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
-                    View
-                  </Button>
-                </Box>
+                  New Release
+                </Button>
               </Box>
             </Box>
-          </Grid>
+            <Box>
+              <Box
+                display="flex"
+                flexDirection={isMobile ? "column" : "row"}
+                justifyContent={isMobile ? "flex-start" : "space-between"}
+                // mx="auto"
+                width="100%"
+              >
+                <Box display="flex" flexDirection={isMobile ? "column" : "row"}>
+                  {/* Filter */}
+                  <CustomAutocomplete labelName="Filter" width={90} />
+                  {/* Sort By */}
+                  <CustomAutocomplete
+                    labelName="Sort By: Newest/Recent/top Appreciated"
+                    width={isMobile ? 250 : 350}
+                  />
+                </Box>
+
+                <Box>
+                  {/* Search */}
+                  <CustomAutocomplete width={90} getSearchIcon={true} />
+                </Box>
+              </Box>
+              <Grid container spacing={isMobile ? 2 : 4}>
+                {releaseData.map((item, index) => (
+                  <Grid
+                    item
+                    xs={12}
+                    md={6}
+                    key={index}
+                    sx={{
+                      display: "flex",
+                      justifyContent:
+                        index % 2 === 0 ? "flex-end" : "flex-start",
+                    }}
+                  >
+                    <Card
+                      sx={{
+                        display: "flex",
+                        flexDirection: isMobile ? "column" : "row",
+                        maxWidth: isMobile ? 320 : 620,
+                        borderRadius: "10px",
+                        boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.3)",
+                        cursor: "pointer",
+                        border: "2px solid white",
+                        backgroundColor: "black",
+                        color: "white",
+                      }}
+                    >
+                      <CardMedia
+                        sx={{ height: "auto", width: isMobile ? 341.5 : 237 }}
+                        component="img"
+                        image={item.image}
+                        alt={item.title}
+                      />
+                      <CardContent
+                        sx={{ display: "flex", flexDirection: "column" }}
+                      >
+                        <Typography
+                          fontWeight={600}
+                          gutterBottom
+                          variant="h6"
+                          component="div"
+                        >
+                          {array[0].title}
+                        </Typography>
+                        <Typography
+                          fontWeight={600}
+                          gutterBottom
+                          variant="body1"
+                          component="div"
+                        >
+                          {item.name}
+                        </Typography>
+                        <Typography
+                          gutterBottom
+                          variant="body1"
+                          component="div"
+                          color={"#999"}
+                        >
+                          {array[0].volume}
+                        </Typography>
+                        <Typography
+                          gutterBottom
+                          variant="body1"
+                          component="div"
+                        >
+                          <b>{array[0].rating}</b>
+                        </Typography>
+                        <Button
+                          onClick={handleReleaseDetailsPage}
+                          sx={{
+                            color: "white",
+                            position: "relative",
+                            top: "10px",
+                            width: "fit-content",
+                            fontWeight: "600",
+                            color: "#BA9775",
+                            marginLeft: isMobile ? "35%" : "47%",
+                            fontSize: "18px",
+                            "&:hover": {
+                              backgroundColor: "#BA9775",
+                              color: "white",
+                            },
+                          }}
+                        >
+                          View Details <ArrowRightAltIcon />
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          </Box>
         </Grid>
-      </ThemeProvider>
-    </Box>
+      </Grid>
+    </ThemeProvider>
   );
 };
 

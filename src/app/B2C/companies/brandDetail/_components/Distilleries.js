@@ -21,12 +21,8 @@ import Tab from "@mui/material/Tab";
 import MerchantCard from "./MerchantCard";
 import DistelleryCard from "./DistilleryCard";
 
-
-
-const Distelleries = ({data,loading}) => {
- 
+const Distelleries = ({ data, loading }) => {
   const router = useRouter();
-
 
   const handleReleaseDetailsPage = () => {
     router.push("/release/details");
@@ -41,10 +37,10 @@ const Distelleries = ({data,loading}) => {
       <ThemeProvider theme={theme}>
         <Grid container spacing={isMobile ? 2 : 4}>
           <Grid p={isMobile ? 2 : 0} item xs={12} md={6}>
-            <DistelleryCard data={data} loading={loading}/>
+            <DistelleryCard data={data} loading={loading} />
           </Grid>
           <Grid item xs={12} md={6}>
-            <Box p={isMobile ? 3 : 6} sx={{ height: "100%" }}>
+            <Box p={isMobile ? 3 : 0} sx={{ height: "100%" }}>
               <Box
                 sx={{ backgroundColor: "#333" }}
                 width={isMobile ? 270 : 500}
@@ -120,13 +116,18 @@ const Distelleries = ({data,loading}) => {
                   </Box>
                   <Box gap={1} display={"flex"} justifyContent={"center"}>
                     <img
-                      style={{ color: "darkgoldenrod" }}
+                      style={{
+                        color: "darkgoldenrod",
+                        width: 25,
+                        height: 25,
+                        marginRight: 5,
+                      }}
                       src="/Vector (1).png"
                       alt=""
                     />
                     <Typography
                       variant={isMobile ? "body1" : "h6"}
-                      sx={{ fontWeight: "600", color: "goldenrod" }}
+                      sx={{ fontWeight: "600", color: "#BA9775" }}
                     >
                       Renew
                     </Typography>
@@ -143,13 +144,18 @@ const Distelleries = ({data,loading}) => {
                   </Box>
                   <Box gap={1} display={"flex"} justifyContent={"center"}>
                     <img
-                      style={{ color: "darkgoldenrod" }}
+                      style={{
+                        color: "darkgoldenrod",
+                        width: 25,
+                        height: 25,
+                        marginRight: 5,
+                      }}
                       src="/Vector (1).png"
                       alt=""
                     />
                     <Typography
                       variant={isMobile ? "body1" : "h6"}
-                      sx={{ fontWeight: "600", color: "goldenrod" }}
+                      sx={{ fontWeight: "600", color: "#BA9775" }}
                     >
                       Renew
                     </Typography>
@@ -169,7 +175,7 @@ const Distelleries = ({data,loading}) => {
                   <Box gap={1} display={"flex"} justifyContent={"center"}>
                     <Typography
                       variant={isMobile ? "body1" : "h6"}
-                      sx={{ fontWeight: "600", color: "goldenrod" }}
+                      sx={{ fontWeight: "600", color: "#BA9775" }}
                     >
                       View Posting
                     </Typography>
@@ -198,7 +204,7 @@ const Distelleries = ({data,loading}) => {
                   >
                     Sherry oak 25 years old, 2018 release
                   </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
+                  <Button sx={{ fontWeight: "600", color: "#BA9775" }}>
                     View
                   </Button>
                 </Box>
@@ -209,7 +215,7 @@ const Distelleries = ({data,loading}) => {
                   >
                     Sherry oak 25 years old, 2018 release
                   </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
+                  <Button sx={{ fontWeight: "600", color: "#BA9775" }}>
                     View
                   </Button>
                 </Box>
@@ -220,7 +226,7 @@ const Distelleries = ({data,loading}) => {
                   >
                     Sherry oak 25 years old, 2018 release
                   </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
+                  <Button sx={{ fontWeight: "600", color: "#BA9775" }}>
                     View
                   </Button>
                 </Box>
@@ -231,7 +237,7 @@ const Distelleries = ({data,loading}) => {
                   >
                     Sherry oak 25 years old, 2018 release
                   </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
+                  <Button sx={{ fontWeight: "600", color: "#BA9775" }}>
                     View
                   </Button>
                 </Box>

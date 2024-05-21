@@ -1,16 +1,18 @@
-"use client"
-import React from 'react'
-import ListOfComapanies from './_components/ListOfComapanies'
-import { Box } from '@mui/material'
-import Navbar from '@/components/Navbar'
+"use client";
+import React from "react";
+import ListOfComapanies from "./_components/ListOfComapanies";
+import { Box } from "@mui/material";
+import Navbar from "@/components/Navbar";
+import { Suspense } from "react";
 
 const page = () => {
   return (
     <Box>
-        <Navbar/>
-      <ListOfComapanies/>
-    </Box>
-  )
-}
 
-export default page
+      <Navbar />
+      <ListOfComapanies />
+    </Box>
+  );
+};
+
+export default page;

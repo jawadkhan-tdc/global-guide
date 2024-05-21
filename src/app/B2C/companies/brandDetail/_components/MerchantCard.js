@@ -4,89 +4,173 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
+import {
+  Button,
+  Paper,
+  createTheme,
+  useMediaQuery,
+  Divider,
+} from "@mui/material";
 import { useRouter } from "next/navigation";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import Heading from "@/components/Heading";
+import CustomAutocomplete from "@/components/CustomAutocomplete";
 
 export default function MerchantCard({ loading, data }) {
   const router = useRouter();
   const handleMerchant = (data) => {
-    router.push(`/B2C/merchant?data=${encodeURIComponent(JSON.stringify(data))}`);
+    router.push(
+      `/B2C/brands?data=${encodeURIComponent(JSON.stringify(data))}`
+    );
   };
+
+  const theme = createTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const headingName = "Merchants";
   return (
     <Box>
       {loading ? (
         <Typography>loading</Typography>
       ) : (
-        <Box>
-          {data.merchants.map((brandDetails) => {
+        <Box
+          display={"flex"}
+          flexDirection={"column"}
+          borderRadius={2}
+          rowGap={1}
+          py={2}
+          component={Paper}
+          bgcolor={"#333"}
+          alignItems={"center"}
+          // justifyItems={"center"}
+        >
+          <Box ml={3}>
+            <Heading
+              headingName={headingName}
+              color="#fff"
+              textTransform="uppercase"
+              variant="h6"
+              textAlign={"start"}
+            />
+          </Box>
+          <Divider
+            variant="fullWidth"
+            sx={{
+              backgroundColor: "#FFF",
+              height: 1,
+              width: "99%",
+            }}
+          />
+          <Box
+            mt={1}
+            display="flex"
+            flexDirection={isMobile ? "column" : "row"}
+            justifyContent={isMobile ? "flex-start" : "space-between"}
+            mx="auto"
+            width="90%"
+          >
+            <Box display="flex" flexDirection={isMobile ? "column" : "row"}>
+              {/* Filter */}
+              <CustomAutocomplete labelName="Filter" width={90} />
+              {/* Sort By */}
+              <CustomAutocomplete
+                labelName="Sort By: Newest/Recent/top Appreciated"
+                width={isMobile ? 250 : 350}
+              />
+            </Box>
+
+            <Box>
+              {/* Search */}
+              <CustomAutocomplete width={90} getSearchIcon={true} />
+            </Box>
+          </Box>
+
+          {data.merchants.map((item, index) => {
             return (
-              <Card sx={{ display: "flex", backgroundColor: "black", mt: 2 }}>
+              <Card
+                key={index}
+                sx={{
+                  display: "flex",
+                  flexDirection: isMobile ? "column" : "row",
+                  maxWidth: "90%",
+                  borderRadius: "10px",
+                  border: "1px solid #fff",
+                  backgroundColor: "#222",
+                  boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.3)",
+                }}
+              >
                 <CardMedia
-                  component="img"
-                  sx={{ width: 151, height: 150 }}
-                  image={brandDetails.image}
-                  alt="Live from space album cover"
-                />
-                <Box
                   sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "space-between",
-                    width: "100%",
+                    width: isMobile ? "100%" : "35%",
+                    height: isMobile ? 150 : "auto",
                   }}
-                >
-                  <CardContent sx={{ flex: "1 0 auto" }}>
-                    <Typography component="div" variant="h5" color={"white"}>
-                      {brandDetails.name}
-                    </Typography>
+                  image={item.image}
+                />
+                <CardContent sx={{ width: isMobile ? "100%" : "65%" }}>
+                  {/* Distillery Name */}
+                  <Typography
+                    fontWeight={600}
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                    color="#fff"
+                  >
+                    {item.name}
+                  </Typography>
+                  {/* Country Name */}
+                  <Typography
+                    gutterBottom
+                    variant="body1"
+                    component="div"
+                    color="#fff"
+                    textAlign={"justify"}
+                    pr={4}
+                  >
+                    Lorem ipsum is placeholder text commonly used in the
+                    graphic, print, and publishing industries for previewing
+                    layouts and visual mockups.
+                  </Typography>
+
+                  {/* Explore More Button */}
+                  <Box
+                    textAlign="end"
+                    mr={3}
+                    display={"flex"}
+                    justifyContent={isMobile ? "center" : "flex-end"}
+                    alignItems="center"
+                  >
                     <Box
-                      sx={{ display: "flex", justifyContent: "space-between" }}
+                      sx={{
+                        cursor: "pointer",
+                        width: isMobile ? "45%" : "40%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-around",
+                        mt: 2,
+                        backgroundColor: "#BA9775",
+                        px: 1,
+                        "&:hover": {
+                          backgroundColor: "#a28664",
+                        },
+                      }}
+                      onClick={() => handleMerchant(item.brands)}
                     >
                       <Typography
-                        variant="subtitle1"
-                        component="div"
-                        color={"white"}
-                      >
-                        {brandDetails.country}
-                      </Typography>
-                      <Typography
-                        variant="subtitle1"
-                        component="div"
-                        color={"white"}
-                      >
-                        Est. 1897
-                      </Typography>
-                      <Typography
-                        variant="subtitle1"
-                        component="div"
-                        color={"white"}
-                      >
-                        5 Releases
-                      </Typography>
-                    </Box>
-                    <Typography color={"white"}>attherate@gmail.com</Typography>
-                    <Box>
-                      <Button
-                        onClick={() => 
-                          handleMerchant(brandDetails.brands)
-                        }
-                        variant="contained"
+                        fontWeight={500}
+                        color="#fff"
+                        textTransform="Capitalize"
+                        padding="0px"
                         sx={{
-                          backgroundColor: "goldenrod",
-                          borderRadius: "none",
-                          color: "white",
-                          position: "relative",
-                          top: "10px",
-                          left: "70%",
-                          width: "fit-content",
-                          fontWeight: "600",
+                          display: "flex",
+                          alignItems: "center",
+                          border: 0,
                         }}
                       >
-                        Brands
-                      </Button>
+                        Explore more
+                      </Typography>
+                      <ArrowRightAltIcon sx={{ color: "#fff" }} />
                     </Box>
-                  </CardContent>
-                </Box>
+                  </Box>
+                </CardContent>
               </Card>
             );
           })}
