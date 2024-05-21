@@ -109,4 +109,3 @@ export default function CenteredTabs() {
     </Box>
   );
 }
-ƒ;
