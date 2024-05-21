@@ -1,12 +1,12 @@
-import React from 'react'
-import ReleasedData from './_components/ReleasedData'
+import React, { Suspense } from "react";
+import ReleasedData from "./_components/ReleasedData";
 
 function page() {
-    return (
-        <div>
-            <ReleasedData />
-        </div>
-    )
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ReleasedData />
+    </Suspense>
+  );
 }
 
-export default page
+export default page;

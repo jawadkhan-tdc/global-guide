@@ -1,9 +1,6 @@
 {
-  "/B2C/release/page": "app/B2C/release/page.js",
-  "/B2C/release/details/page": "app/B2C/release/details/page.js",
-  "/page": "app/page.js",
-  "/company/page": "app/company/page.js",
   "/companydata/page": "app/companydata/page.js",
+  "/page": "app/page.js",
   "/adminhome/page": "app/adminhome/page.js",
-  "/branddata/page": "app/branddata/page.js"
+  "/company/page": "app/company/page.js"
 }

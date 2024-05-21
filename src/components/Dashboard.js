@@ -36,7 +36,7 @@ function Dashboard() {
             backgroundColor: "gray",
             color: "#ffffff",
           }}
-          onClick={() => handleClick("/company")}
+          onClick={() => handleClick("/companydata")}
         >
           Admin
         </Button>

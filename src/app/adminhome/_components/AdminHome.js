@@ -44,9 +44,6 @@ function AdminHome() {
         }
     }, []);
 
-    const handleClick = (role, id) => {
-        localStorage.setItem('role', role);
-    };
 
     return (
         <Box style={{ display: 'flex', alignItems: 'center', height: '100vh', flexDirection: 'column', gap: 15 }}>

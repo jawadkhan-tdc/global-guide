@@ -1,12 +1,12 @@
-import React from 'react'
-import MerchantData from './_components/MerchantData'
+import React from "react";
+import MerchantData from "./_components/MerchantData";
 
 function page() {
-    return (
-        <div>
-            <MerchantData />
-        </div>
-    )
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <MerchantData />
+    </Suspense>
+  );
 }
 
-export default page
+export default page;

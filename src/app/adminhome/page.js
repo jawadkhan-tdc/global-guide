@@ -1,12 +1,12 @@
-import React from 'react'
-import AdminHome from './_components/AdminHome'
+import React, { Suspense } from "react";
+import AdminHome from "./_components/AdminHome";
 
 function page() {
   return (
-    <div>
-      <AdminHome/>
-    </div>
-  )
+    <Suspense fallback={<div>Loading...</div>}>
+      <AdminHome />
+    </Suspense>
+  );
 }
 
-export default page
+export default page;

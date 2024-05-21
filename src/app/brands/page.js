@@ -1,12 +1,12 @@
-import React from 'react'
-import Brands from './_components/Brands'
+import React, { Suspense } from "react";
+import Brands from "./_components/Brands";
 
 function page() {
   return (
-    <div>
-      <Brands/>
-    </div>
-  )
+    <Suspense fallback={<div>Loading...</div>}>
+      <Brands />
+    </Suspense>
+  );
 }
 
-export default page
+export default page;

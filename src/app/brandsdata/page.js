@@ -1,12 +1,12 @@
-import React from 'react'
-import BrandsData from './_components/BrandsData'
+import React, { Suspense } from "react";
+import BrandsData from "./_components/BrandsData";
 
 function page() {
-    return (
-        <div>
-            <BrandsData />
-        </div>
-    )
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <BrandsData />
+    </Suspense>
+  );
 }
 
-export default page
+export default page;

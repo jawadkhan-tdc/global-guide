@@ -1,11 +1,11 @@
-import React from 'react'
-import Distellery from './_components/Distellergy'
+import React, { Suspense } from "react";
+import Distellery from "./_components/Distellergy";
 function page() {
-    return (
-        <div>
-            <Distellery />
-        </div>
-    )
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Distellery />
+    </Suspense>
+  );
 }
 
-export default page
+export default page;
