@@ -10,6 +10,7 @@ import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import { createTheme } from "@mui/material/styles"; // Correct import for createTheme
 
 export default function BrandCard({ loading, data }) {
+  console.log("brands are ", data);
   const router = useRouter();
   const handleRelease = (data) => {
     router.push(

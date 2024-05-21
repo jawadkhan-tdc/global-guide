@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST="{}"
+self.__REACT_LOADABLE_MANIFEST="{\"app/B2B/brands/page.jsx -> next/image\":{\"id\":\"app/B2B/brands/page.jsx -> next/image\",\"files\":[]}}"
