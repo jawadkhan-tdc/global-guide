@@ -1,11 +1,13 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/B2B/companies/brandDetail/page": "app/B2B/companies/brandDetail/page.js",
   "/B2C/companies/page": "app/B2C/companies/page.js",
   "/B2C/companies/brandDetail/page": "app/B2C/companies/brandDetail/page.js",
-  "/B2B/companies/page": "app/B2B/companies/page.js",
-  "/page": "app/page.js",
   "/B2C/page": "app/B2C/page.js",
+  "/B2C/release/details/page": "app/B2C/release/details/page.js",
   "/B2C/release/page": "app/B2C/release/page.js",
-  "/B2C/release/details/page": "app/B2C/release/details/page.js"
+  "/page": "app/page.js",
+  "/B2B/page": "app/B2B/page.js",
+  "/B2B/companies/page": "app/B2B/companies/page.js",
+  "/B2B/companies/brandDetail/page": "app/B2B/companies/brandDetail/page.js",
+  "/B2B/release/page": "app/B2B/release/page.js"
 }

@@ -10,6 +10,7 @@ import {
   ThemeProvider,
   createTheme,
   Button,
+  Paper,
   Box,
   Radio,
   FormControlLabel,
@@ -74,14 +75,13 @@ function a11yProps(index) {
     "aria-controls": `simple-tabpanel-${index}`,
   };
 }
-const Brand = ({data}) => {
+const Brand = ({ data }) => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   const router = useRouter();
-
 
   const handleReleaseDetailsPage = () => {
     router.push("/release/details");
@@ -200,13 +200,18 @@ const Brand = ({data}) => {
                   </Box>
                   <Box gap={1} display={"flex"} justifyContent={"center"}>
                     <img
-                      style={{ color: "darkgoldenrod" }}
+                      style={{
+                        color: "darkgoldenrod",
+                        height: 25,
+                        width: 25,
+                        marginRight: 5,
+                      }}
                       src="/Vector (1).png"
                       alt=""
                     />
                     <Typography
                       variant={isMobile ? "body1" : "h6"}
-                      sx={{ fontWeight: "600", color: "goldenrod" }}
+                      sx={{ fontWeight: "600", color: "#BA9775" }}
                     >
                       Renew
                     </Typography>
@@ -223,13 +228,18 @@ const Brand = ({data}) => {
                   </Box>
                   <Box gap={1} display={"flex"} justifyContent={"center"}>
                     <img
-                      style={{ color: "darkgoldenrod" }}
+                      style={{
+                        color: "darkgoldenrod",
+                        height: 25,
+                        width: 25,
+                        marginRight: 5,
+                      }}
                       src="/Vector (1).png"
                       alt=""
                     />
                     <Typography
                       variant={isMobile ? "body1" : "h6"}
-                      sx={{ fontWeight: "600", color: "goldenrod" }}
+                      sx={{ fontWeight: "600", color: "#BA9775" }}
                     >
                       Renew
                     </Typography>
@@ -249,13 +259,14 @@ const Brand = ({data}) => {
                   <Box gap={1} display={"flex"} justifyContent={"center"}>
                     <Typography
                       variant={isMobile ? "body1" : "h6"}
-                      sx={{ fontWeight: "600", color: "goldenrod" }}
+                      sx={{ fontWeight: "600", color: "#BA9775" }}
                     >
                       View Posting
                     </Typography>
                   </Box>
                 </Box>
               </Box>
+              {/* Favourite Brands */}
               <Box
                 mt={2}
                 sx={{ backgroundColor: "#333" }}
@@ -263,57 +274,65 @@ const Brand = ({data}) => {
                 borderRadius={2}
                 p={3}
               >
-                <Typography
-                  variant="h5"
-                  fontWeight={700}
-                  gutterBottom
-                  color={"white"}
-                >
-                  FAVORITE BRANDS
-                </Typography>
-                <Box display={"flex"} justifyContent={"space-between"} mt={2}>
+                <Box p={3}>
                   <Typography
-                    variant={isMobile ? "body1" : "h5"}
-                    color={"#999"}
+                    variant="h5"
+                    color={"white"}
+                    fontWeight={500}
+                    gutterBottom
                   >
-                    Sherry oak 25 years old, 2018 release
+                    FAVORITE BRANDS
                   </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
-                    View
-                  </Button>
-                </Box>
-                <Box display={"flex"} justifyContent={"space-between"} mt={2}>
-                  <Typography
-                    variant={isMobile ? "body1" : "h5"}
-                    color={"#999"}
+                  <Box
+                    mt={2}
+                    gap={0}
+                    display={"flex"}
+                    justifyContent={"space-between"}
                   >
-                    Sherry oak 25 years old, 2018 release
-                  </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
-                    View
-                  </Button>
-                </Box>
-                <Box display={"flex"} justifyContent={"space-between"} mt={2}>
-                  <Typography
-                    variant={isMobile ? "body1" : "h5"}
-                    color={"#999"}
-                  >
-                    Sherry oak 25 years old, 2018 release
-                  </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
-                    View
-                  </Button>
-                </Box>
-                <Box display={"flex"} justifyContent={"space-between"} mt={2}>
-                  <Typography
-                    variant={isMobile ? "body1" : "h5"}
-                    color={"#999"}
-                  >
-                    Sherry oak 25 years old, 2018 release
-                  </Typography>
-                  <Button sx={{ fontWeight: "600", color: "goldenrod" }}>
-                    View
-                  </Button>
+                    <Box
+                      width="33%"
+                      display={"flex"}
+                      justifyContent={"center"}
+                      px={isMobile ? 2 : 3}
+                      py={isMobile ? 3 : 3}
+                      borderRadius={4}
+                      sx={{ backgroundColor: "#444" }}
+                    >
+                      <img
+                        src="/bowmore-logo-white 2.png"
+                        alt=""
+                        width={isMobile ? 100 : 140}
+                      />
+                    </Box>
+                    <Box
+                      width="33%"
+                      px={isMobile ? 2 : 3}
+                      py={isMobile ? 3 : 3}
+                      borderRadius={4}
+                      sx={{ backgroundColor: "#BA9775" }}
+                    >
+                      <Typography
+                        textAlign={"center"}
+                        color={"white"}
+                        variant={isMobile ? "body1" : "h6"}
+                      >
+                        Explore the Brand{" "}
+                      </Typography>
+                    </Box>
+                  </Box>
+                  <Box mt={2}>
+                    <Typography variant="h7" color={"#999"}>
+                      ABOUT
+                    </Typography>
+                  </Box>
+                  <Box>
+                    <Typography variant="body1" color={"white"}>
+                      Found in 1911, lorem ipsum this cognac has a very pleasant
+                      golden tint and the aromatics show classic scents of
+                      baked, white grapes, hard lemon candy, and opulent French
+                      oak.{" "}
+                    </Typography>
+                  </Box>
                 </Box>
               </Box>
             </Box>
