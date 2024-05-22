@@ -20,8 +20,8 @@ const HeroSection = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
-    <Box display={"flex"} my={"auto"} mx={"auto"} maxWidth={"100%"}>
-      <Grid container spacing={0} sx={{ height: 600 }}>
+    <Box display={"flex"} my={"auto"} mx={"auto"} maxWidth={"100%"} position="relative">
+      <Grid container spacing={0} sx={{ height: 600 }}  >
         <Grid item xs={12} lg={5} height={600}>
           <Box
             sx={{
@@ -85,6 +85,7 @@ const HeroSection = () => {
             </Box>
           </Box>
         </Grid>
+
         <Grid item xs={12} lg={7} height={600}>
           <Grid
             container
@@ -99,7 +100,7 @@ const HeroSection = () => {
             <Grid
               item
               height={600}
-              sx={12}
+              xs={12}
               lg={5}
               style={{
                 display: "flex",
@@ -131,7 +132,7 @@ const HeroSection = () => {
                   <Typography sx={{ color: "#BA9775" }}>
                     PRODUCT TYPE
                   </Typography>
-                  <Typography>Single melt whisky</Typography>
+                  <Typography>Single malt whisky</Typography>
                 </Box>
                 <Box sx={{ color: "black" }}>
                   <Typography sx={{ color: "#BA9775" }}>REGION</Typography>
@@ -194,12 +195,12 @@ const HeroSection = () => {
                 </Box>
               </Box>
             </Grid>
-            <Grid mt={2} item sx={12} lg={7}>
+            <Grid mt={2} item xs={12} lg={7}>
               <Box
                 width={isMobile ? 270 : 350}
                 borderRadius={2}
                 display={"flex"}
-                sx={{backgroundImage: "url('/Rectangle 4.png')",
+                sx={{ backgroundImage: "url('/Rectangle 4.png')",
                 backgroundSize: "cover"}}
                 flexDirection={"column"}
                 justifyContent={"center"}
@@ -248,12 +249,18 @@ const HeroSection = () => {
 
                 <Box mt={1} sx={{display:"flex",alignItems:"center",justifyContent:"center"}}>
                   <Image src="/button1.png" height={40} width={40} />
-                  <Typography color={"black"} gutterBottom>Find Stories nearby</Typography>
+                  <Typography color={"black"} gutterBottom>Find Stores nearby</Typography>
                 </Box>
               </Box>
             </Grid>
           </Grid>
         </Grid>
+        
+        {/* Box with the image between two grids */}
+        <Box sx={{position: "absolute", top: 0, left: "calc(40% - 140px)"}}>
+          <Image src="/releaseMainImage.png" width={280} height={550}/>
+        </Box>
+        
       </Grid>
     </Box>
   );

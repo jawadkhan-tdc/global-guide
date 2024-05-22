@@ -11,34 +11,45 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/companydata/page": [
+    "/B2C/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/companydata/page.css",
-      "static/chunks/app/companydata/page.js"
+      "static/css/app/B2C/page.css",
+      "static/chunks/app/B2C/page.js"
     ],
-    "/adminhome/page": [
+    "/B2C/companies/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/adminhome/page.css",
-      "static/chunks/app/adminhome/page.js"
+      "static/css/app/B2C/companies/page.css",
+      "static/chunks/app/B2C/companies/page.js"
     ],
-    "/brand/page": [
+    "/B2C/companies/brandDetail/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/brand/page.css",
-      "static/chunks/app/brand/page.js"
+      "static/css/app/B2C/companies/brandDetail/page.css",
+      "static/chunks/app/B2C/companies/brandDetail/page.js"
     ],
-    "/releasedata/page": [
+    "/B2C/release/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/releasedata/page.js"
+      "static/chunks/app/B2C/release/page.js"
     ],
-    "/adminrelease/page": [
+    "/B2C/release/details/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/adminrelease/page.css",
-      "static/chunks/app/adminrelease/page.js"
+      "static/chunks/app/B2C/release/details/page.js"
+    ],
+    "/B2B/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/B2B/page.css",
+      "static/chunks/app/B2B/page.js"
+    ],
+    "/B2B/companies/brandDetail/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/B2B/companies/brandDetail/page.css",
+      "static/chunks/app/B2B/companies/brandDetail/page.js"
     ]
   }
 }

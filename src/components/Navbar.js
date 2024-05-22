@@ -41,6 +41,13 @@ const Navbar = () => {
       router.push("/B2B/companies");
     }
   };
+  const handleHome=()=>{
+    if (pathname === "/B2C/companies" || pathname === "/B2C/companies/brandDetail" || pathname === "/B2C/release" || pathname ==="/B2C/release/details" || pathname ==="/B2C/brands") {
+      router.push("/B2C");
+    } else if (pathname === "/B2B/companies/brandDetail" || pathname === "/B2B/release" || pathname === "/B2B/brands") {
+      router.push("/B2B");
+    }
+  }
 
   const list = () => (
     <Box
@@ -51,7 +58,7 @@ const Navbar = () => {
     >
       <List>
         {["Companies"].map((text) => (
-          <ListItem button key={text} onClick={() => handleMenuItemClick()}>
+          <ListItem button key={text} onClick={() => handleMenuItemClick()} >
             <ListItemText primary={text} />
           </ListItem>
         ))}
@@ -100,12 +107,12 @@ const Navbar = () => {
             alignItems: "center",
           }}
         >
-          <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Box sx={{ display: "flex", alignItems: "center" ,cursor:"pointer", flexDirection:"column"}} onClick={handleHome} >
             <Image src="/logo.png" alt="logo_img" width={50} height={30} />
-          </Box>
           <Typography variant="body1" sx={{ color: "white" }}>
             Global Guide
           </Typography>
+          </Box>
         </Grid>
 
         {/* Right section */}

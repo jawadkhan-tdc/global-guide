@@ -135,7 +135,7 @@ const Page = () => {
     <Box>
       <Navbar />
       <ThemeProvider theme={theme}>
-        <Grid container spacing={isMobile ? 2 : 4}>
+        <Grid container spacing={isMobile ? 2 : 4} mt={5}>
           <Grid p={isMobile ? 2 : 0} item xs={12} md={6}>
             <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
               <Tabs

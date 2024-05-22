@@ -106,7 +106,7 @@ const Brand = ({ data }) => {
             </CustomTabPanel> */}
           </Grid>
           <Grid item xs={12} md={6}>
-            <Box p={isMobile ? 3 : 6} sx={{ height: "100%" }}>
+            <Box p={isMobile ? 3 : 0} sx={{ height: "100%" }}>
               <Box
                 sx={{ backgroundColor: "#333" }}
                 width={isMobile ? 270 : 500}

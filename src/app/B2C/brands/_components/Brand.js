@@ -110,7 +110,7 @@ const Brand = () => {
   return (
     <Box>
       <ThemeProvider theme={theme}>
-        <Grid container spacing={isMobile ? 2 : 4}>
+        <Grid container spacing={isMobile ? 2 : 4} mt={5}>
           <Grid p={isMobile ? 2 : 0} item xs={12} md={6}>
               {
                 loading ?(<Typography>loading</Typography>):(<Box>
@@ -124,7 +124,7 @@ const Brand = () => {
             </CustomTabPanel> */}
           </Grid>
           <Grid item xs={12} md={6}>
-            <Box p={isMobile ? 3 : 6} sx={{ height: "100%" }}>
+            <Box p={isMobile ? 3 : 0} sx={{ height: "100%" }}>
               <Box
                 sx={{ backgroundColor: "#333" }}
                 width={isMobile ? 270 : 500}

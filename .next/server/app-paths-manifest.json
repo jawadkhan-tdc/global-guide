@@ -1,7 +1,9 @@
 {
-  "/adminhome/page": "app/adminhome/page.js",
-  "/companydata/page": "app/companydata/page.js",
-  "/releasedata/page": "app/releasedata/page.js",
-  "/brand/page": "app/brand/page.js",
-  "/adminrelease/page": "app/adminrelease/page.js"
+  "/B2C/page": "app/B2C/page.js",
+  "/B2C/companies/page": "app/B2C/companies/page.js",
+  "/B2C/companies/brandDetail/page": "app/B2C/companies/brandDetail/page.js",
+  "/B2C/release/details/page": "app/B2C/release/details/page.js",
+  "/page": "app/page.js",
+  "/B2B/companies/brandDetail/page": "app/B2B/companies/brandDetail/page.js",
+  "/B2B/page": "app/B2B/page.js"
 }

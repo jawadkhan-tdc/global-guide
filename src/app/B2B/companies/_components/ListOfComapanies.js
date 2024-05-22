@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import api from "lib/services/api";
 import React, { useEffect, useState } from "react";
 import {
@@ -12,7 +12,7 @@ import {
 import { useRouter } from "next/navigation";
 
 const ListOfComapanies = () => {
-    const router=useRouter();
+  const router = useRouter();
   const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -70,32 +70,28 @@ const ListOfComapanies = () => {
                       >
                         {companies.country}
                       </Typography>
-                      <Typography
-                        variant="subtitle1"
-                        component="div"
-                        color={"white"}
-                      >
-                        Est. 1897
-                      </Typography>
-                    </Box>
-                    <Typography color={"white"}>attherate@gmail.com</Typography>
-                    <Box>
-                      <Button
-                        onClick={() => handleBrand(companies.id)}
-                        variant="contained"
-                        sx={{
-                          backgroundColor: "goldenrod",
-                          borderRadius: "none",
-                          color: "white",
-                          position: "relative",
-                          top: "10px",
-                          left: "70%",
-                          width: "fit-content",
-                          fontWeight: "600",
-                        }}
-                      >
-                        View Info
-                      </Button>
+                      <Box>
+                        <Typography
+                          variant="subtitle1"
+                          component="div"
+                          color={"white"}
+                        >
+                          Est. 1897
+                        </Typography>
+                        <Button
+                          onClick={() => handleBrand(companies.id)}
+                          variant="contained"
+                          sx={{
+                            backgroundColor: "#BA9775",
+                            color: "white",
+                            width: "fit-content",
+                            fontWeight: "600",
+                            marginTop: 1,
+                          }}
+                        >
+                          View Info
+                        </Button>
+                      </Box>
                     </Box>
                   </CardContent>
                 </Box>

@@ -19,6 +19,7 @@ import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
 import HeroSection from "./HeroSection";
 import Gallery from "./Gallery";
+import Image from "next/image";
 
 const DetailsPage = () => {
   const params = useSearchParams();
@@ -332,8 +333,8 @@ const DetailsPage = () => {
               flexDirection={"column"}
               sx={{ backgroundColor: "#BA9775" }}
             >
-              <Box px={9} display={"flex"} justifyContent={"space-between"}>
-                <img src="/msg.png" alt="" />
+              <Box px={3} display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
+                <Image src="/msg.png" width={30} height={30} />
                 <Button
                   variant="contained"
                   sx={{
@@ -351,11 +352,12 @@ const DetailsPage = () => {
               </Box>
               <Box
                 mt={1}
-                px={9}
+                px={3}
                 display={"flex"}
                 justifyContent={"space-between"}
+                alignItems={"center"}
               >
-                <img src="/save.png" alt="" />
+                <Image src="/save.png" width={30} height={30} />
                 <Button
                   variant="contained"
                   sx={{
